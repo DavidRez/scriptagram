@@ -1,0 +1,36 @@
+section.block-gallery-slider(:class='{ "block-gallery-slider--center": props.center_text }')
+  .block-gallery-slider__container
+    .block-gallery-slider__col.block-gallery-slider__col--content
+      BlockContent(:props='$store.state.isTabletLg ? Object.assign({}, props.content, { buttons: [] }) : props.content')
+    .block-gallery-slider__col.block-gallery-slider__col--slider
+      .block-gallery-slider__items(:class='[ `block-gallery-slider__items--${props.columns}-columns` ]')
+        .block-gallery-slider__item(
+          v-for='(item, i) in props.items',
+          :key='`tile-${i}`',
+          :class='{ "block-gallery-slider__item--border": props.border }',
+          @focusout='pauseVideos',
+          tabindex=0
+        )
+          .block-gallery-slider__image-container(v-if='item.acf_fc_layout === "photo"')
+            BaseImage.block-gallery-slider__image(
+              forceVisible,
+              v-bind='Object.assign({}, item.image, { imageBackground: true, forceVisible: true })'
+            )
+          .block-gallery-slider__video-container(v-else-if='item.acf_fc_layout === "video_file"')
+            video.block-gallery-slider__video(controls, ref='video')
+              source(:src='item.url')
+              img(v-if='item.thumbnail', :src='item.thumbnail')
+          .block-gallery-slider__video-container.block-gallery-slider__video-container--embedded(
+            v-else-if='item.acf_fc_layout === "video_embedded"'
+          )
+            iframe.block-gallery-slider__video.block-gallery-slider__video--embedded(
+              allow='accelerometer; encrypted-media; gyroscope; picture-in-picture',
+              allowfullscreen,
+              frameborder='0',
+              loading='lazy',
+              ref='videoEmbed',
+              :src='item.url + "?enablejsapi=1"',
+              :title='item.title'
+            )
+    .block-gallery-slider__col.block-gallery-slider__col--content(v-if='$store.state.isTabletLg')
+      BlockContent(:props='Object.assign({}, props.content, { header: null, subheader: null, body: null })')

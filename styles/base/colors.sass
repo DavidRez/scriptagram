@@ -1,0 +1,19 @@
+// -----------------------
+// color defaults
+// -----------------------
+$black: #000
+$gray: #ccc
+$white: #fff
+$success: #2fd64c
+$danger: #ff0033
+$roosterPurple: #4d4ec1
+$chartreuse: #C1C04D
+
+// -----------------------
+// project colors
+// -----------------------
+
+// Project colors are set in WP backend. Used As CSS Variables throughout project. CSS variables are added to project in layouts/default.vue.
+// Each project color set has two CSS Variables:
+// 1. --[label] -> rgba(#, #, #, #) This will be able to set the color directly
+// 2. --[label]-rgb -> #, #, # This gives you control over the alpha (i.e. background: rgba(#{var(--[label]-rgb)}, 0.5) gives you the color at .5 opacity)

@@ -1,0 +1,5 @@
+section.hero
+  BaseImage.hero__image(v-bind='Object.assign({}, props.image, { imageBackground: true })')
+  .hero__container
+    .hero__col
+      BlockContent(:props='props.content')

@@ -1,0 +1,94 @@
+%button
+  @include focus
+  display: flex
+  align-items: center
+  transition: background .2s ease, color .2s ease
+  cursor: pointer
+  text-align: center
+  text-transform: uppercase
+  text-decoration: none
+  line-height: 1
+  font-weight: 700
+
+@mixin button-primary($background, $text)
+  @extend %button
+  @include hover-supported
+    background: transparent
+    color: $background
+    svg
+      fill: $background
+    .button-icon-stroke svg
+      stroke: $background
+  background: $background
+  border: 2px solid $background
+  border-radius: rem-calc(46)
+  padding: rem-calc(12) rem-calc(26)
+  color: $text
+
+  svg
+    transition: fill .2s ease
+    fill: $text
+
+  .button-icon-stroke svg
+    transition: stroke .2s ease
+    fill: none
+    stroke: $text
+
+@mixin button-secondary($background, $text)
+  @extend %button
+  @include hover-supported
+    background: $background
+    color: $text
+    svg
+      fill: $text
+    .button-icon-stroke svg
+      stroke: $text
+  background: transparent
+  border: 2px solid $background
+  border-radius: rem-calc(46)
+  padding: rem-calc(12) rem-calc(26)
+  color: $background
+
+  svg
+    transition: fill .2s ease
+    fill: $background
+
+  .button-icon-stroke svg
+    transition: stroke .2s ease
+    fill: none
+    stroke: $background
+
+@mixin button-underline($text, $hover)
+  @extend %button
+  @include hover-supported
+    color: $hover
+    &::after
+      background: $hover
+    svg
+      fill: $hover
+    .button-icon-stroke svg
+      stroke: $hover
+  position: relative
+  transition: color .2s ease
+  border: none
+  background: none
+  padding: 0 0 8px 0
+
+  &::after
+    display: block
+    position: absolute
+    top: calc(100% - 3px)
+    transition: background .2s ease
+    background: $text
+    width: 100%
+    height: 3px
+    content: ''
+
+  svg
+    transition: fill .2s ease
+    fill: $text
+
+  .button-icon-stroke svg
+    transition: stroke .2s ease
+    fill: none
+    stroke: $text

@@ -1,0 +1,18 @@
+.hero
+  display: flex
+  position: relative
+  flex-direction: column
+  justify-content: center
+  background: linear-gradient(45deg, rgba($roosterPurple, .8) 0%, rgba($chartreuse, .8) 100%)
+  min-height: rem-calc(800)
+  max-height: 90vh
+
+  &__image
+    @extend %absolute
+    z-index: -1
+
+  &__container
+    @include container
+
+  &__col
+    @include col(12)

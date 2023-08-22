@@ -1,0 +1,52 @@
+%all
+  box-sizing: border-box
+
+%body
+  @include desktop
+    font-size: 18px
+  @include phone
+    font-size: 14px
+  text-rendering: optimizeLegibility
+  line-height: 1.467
+  color: $black
+  font-family: var(--font)
+  font-size: 16px
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+%h1
+  line-height: 1.258
+  font-size: 50px
+  font-weight: 800
+
+%h2
+  line-height: 1.258
+  font-size: 40px
+  font-weight: bold
+
+%h3
+  line-height: 1.258
+  font-size: 30px
+  font-weight: 500
+
+%h4
+  font-size: 25px
+  font-weight: 300
+
+%h5
+  font-size: 20px
+
+%h6
+  font-size: 18px
+
+%a
+  color: $black
+
+%no-margin
+  margin: 0
+
+%wysiwyg-text
+  p:not(:last-child)
+    @include laptop-lg
+      margin-bottom: .75rem
+    margin-bottom: .5rem

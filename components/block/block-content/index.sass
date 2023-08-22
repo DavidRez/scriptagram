@@ -1,0 +1,116 @@
+.block-content
+
+  &--center
+    text-align: center
+
+  &--right
+    text-align: right
+
+  &--forceLeft
+    text-align: left !important
+
+  &--forceCenter
+    text-align: center !important
+
+  &--forceRight
+    text-align: right !important
+
+  &--white
+    color: $white
+
+  &__header,
+  &__subheader
+    .block-content--header-color-primary &
+      color: var(--primary)
+
+    .block-content--header-color-white &
+      color: $white
+
+  &__header
+    @include desktop
+      margin-bottom: rem-calc(24)
+    margin-bottom: rem-calc(16)
+
+    &--no-margin
+      margin-bottom: 0
+
+  &__subheader
+    @include desktop
+      margin-bottom: rem-calc(14)
+    margin-bottom: rem-calc(8)
+
+    &--no-margin
+      margin-bottom: 0
+
+  &__body
+    @extend %wysiwyg-text
+
+    h2
+      .pages-privacy-policy &,
+      .pages-nondiscrimination &,
+      .pages-accessibility &
+        margin: 0 0 1rem 0
+
+        &:not(:first-child)
+          margin-top: 2rem
+
+  &__buttons
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+
+    &--inline
+      @include phone-lg
+        flex-direction: column
+        &.block-content__buttons--left
+          align-items: flex-start
+      flex-direction: row
+      align-items: center
+      justify-content: flex-start
+
+    &--center
+      align-items: center
+      justify-content: center
+
+    &--right
+      justify-content: flex-end
+
+    &--forceLeft
+      justify-content: flex-start !important
+
+    &--forceCenter
+      justify-content: center !important
+
+    &--forceRight
+      justify-content: flex-end !important
+
+  &__button
+    @include desktop
+      margin-top: rem-calc(32)
+    margin-top: rem-calc(24)
+
+    &--inline
+      .block-content__buttons--left &
+        margin-right: rem-calc(24)
+
+      .block-content__buttons--center &
+        margin-right: rem-calc(12)
+        margin-left: rem-calc(12)
+
+      .block-content__buttons--right &
+        margin-left: rem-calc(24)
+
+    &--stacked
+      display: flex
+      width: auto
+
+  .block-image-content-banner-alt &
+    .block-content__header
+      @include desktop
+        margin-bottom: rem-calc(20)
+      margin-bottom: rem-calc(12)
+    .block-content__subheader
+      @extend %h4
+      @include desktop
+        margin-bottom: rem-calc(10)
+      margin-bottom: rem-calc(4)

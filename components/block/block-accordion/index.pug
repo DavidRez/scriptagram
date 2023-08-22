@@ -1,0 +1,108 @@
+section.block-accordion(:class='{ "block-accordion--2-columns": columns === 2 }')
+  .block-accordion__container(v-if='props.title')
+    .block-accordion__col
+      h2.block-accordion__title(v-html='props.title', ref='gsap1')
+  .block-accordion__container(:class='`block-accordion__container--${props.item_spacing}`')
+    .block-accordion__col
+      .block-accordion__items
+        button.block-accordion__item-container(
+          v-for='(item, i) in props.items',
+          v-if='columns === 2 ? i < props.items.length / 2 : true',
+          :key='`${item.title}-${i}`',
+          :aria-controls='"block-accordion__drawer--" + i',
+          aria-label='expand section',
+          :class='{ "block-accordion__item-container--active": expanded === i }',
+          @click='toggleAccordion(i)',
+          ref='gsap2'
+        )
+          .block-accordion__item
+            h3.block-accordion__item-title(v-html='item.title')
+            .block-accordion__cross
+              span
+              span
+          .block-accordion__drawer(
+            :aria-hidden='expanded !== i ? "true" : "false"',
+            aria-live='polite',
+            :id='"block-accordion__drawer--" + i',
+            role='region',
+            :style='{ height: expanded === i ? accordionBodyHeight + "px" : 0 }'
+          )
+            .block-accordion__content(:aria-hidden='expanded !== i ? "true" : "false"', ref='content')
+              .block-accordion__body(v-html='item.body')
+              .block-accordion__image-container(v-if='item.media_type === "photo"')
+                BaseImage.block-accordion__image(v-bind='Object.assign({}, item.photo.image, { imageBackground: true })')
+              .block-accordion__video-container-outer(v-else-if='item.media_type === "video-file"')
+                .block-accordion__video-container.block-accordion__video-container--file
+                  video.block-accordion__video(
+                    v-if='expanded === i',
+                    controls,
+                    ref='video'
+                  )
+                    source(:src='item.video_file.url')
+                    img(v-if='item.video_file.thumbnail', :src='item.video_file.thumbnail')
+              .block-accordion__video-container.block-accordion__video-container--embedded(v-else-if='item.media_type === "video-embedded"')
+                iframe.block-accordion__video(
+                  allow='accelerometer; encrypted-media; gyroscope; picture-in-picture',
+                  allowfullscreen,
+                  frameborder='0',
+                  loading='lazy',
+                  ref='videoEmbed',
+                  :src='item.video_embedded.url + "?enablejsapi=1"',
+                  :title='item.video_embedded.title'
+                )
+          .block-accordion__line-container(v-if='props.item_spacing === "line" && ((columns === 1 && i < props.items.length - 1) || (columns === 2 && i < props.items.length / 2 - 1))')
+            .block-accordion__line
+
+
+    // Optional Second Column //////////////////////////////////////////////
+
+    .block-accordion__col(v-if='columns === 2')
+      .block-accordion__items
+        button.block-accordion__item-container(
+          v-for='(item, i) in props.items',
+          v-if='i >= props.items.length / 2',
+          :key='`${item.title}-${i}`',
+          :aria-controls='"block-accordion__drawer--" + i',
+          aria-label='expand section',
+          :class='{ "block-accordion__item-container--active": expanded === i }',
+          @click='toggleAccordion(i)',
+          ref='gsap2'
+        )
+          .block-accordion__item
+            h3.block-accordion__item-title(v-html='item.title')
+            .block-accordion__cross
+              span
+              span
+          .block-accordion__drawer(
+            :aria-hidden='expanded !== i ? "true" : "false"',
+            aria-live='polite',
+            :id='"block-accordion__drawer--" + i',
+            role='region',
+            :style='{ height: expanded === i ? accordionBodyHeight + "px" : 0 }'
+          )
+            .block-accordion__content(:aria-hidden='expanded !== i ? "true" : "false"', ref='content')
+              .block-accordion__body(v-html='item.body')
+              .block-accordion__image-container(v-if='item.media_type === "photo"')
+                BaseImage.block-accordion__image(v-bind='Object.assign({}, item.photo.image, { imageBackground: true })')
+              .block-accordion__video-container-outer(v-else-if='item.media_type === "video-file"')
+                .block-accordion__video-container.block-accordion__video-container--file
+                  video.block-accordion__video(
+                    v-if='expanded === i',
+                    controls,
+                    ref='video'
+                  )
+                    source(:src='item.video_file.url')
+                    img(v-if='item.video_file.thumbnail', :src='item.video_file.thumbnail')
+              .block-accordion__video-container.block-accordion__video-container--embedded(v-else-if='item.media_type === "video-embedded"')
+                iframe.block-accordion__video.block-accordion__video--embedded(
+                  v-if='expanded === i',
+                  allow='accelerometer; encrypted-media; gyroscope; picture-in-picture',
+                  allowfullscreen,
+                  frameborder='0',
+                  loading='lazy',
+                  ref='videoEmbed',
+                  :src='item.video_embedded.url + "?enablejsapi=1"',
+                  :title='item.video_embedded.title'
+                )
+          .block-accordion__line-container(v-if='props.item_spacing === "line" && ((columns === 1 && i < props.items.length - 1) || (columns === 2 && i < props.items.length / 2 - 1))')
+            .block-accordion__line

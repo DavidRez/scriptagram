@@ -1,0 +1,44 @@
+.block-content(
+  :class=`[
+    'block-content--' + props.body_color,
+    'block-content--' + props.text_alignment,
+    {
+      'block-content--forceCenter': forceCenter,
+      'block-content--forceLeft': forceLeft,
+      'block-content--forceRight': forceRight,
+      'block-content--header-color-primary': props.header_color === 'primary',
+      'block-content--header-color-white': props.header_color === 'white'
+    }
+  ]`)
+  h1.block-content__header(v-if='props.hero_header && props.header', v-html='props.header')
+  h2.block-content__header(
+    v-if='props.header', v-html='props.hero_header && props.subheader ? props.subheader : props.header',
+    :class=`{ 'block-content__header--no-margin': props.hero_header && props.subheader && !props.body }`,
+  )
+  h3.block-content__subheader(
+    v-if='props.subheader && !props.hero_header',
+    :class=`{ 'block-content__subheader--no-margin': !props.body }`,
+    v-html='props.subheader'
+  )
+  .block-content__body(v-if='props.body', v-html='props.body')
+  .block-content__buttons(
+    v-if='props.buttons',
+    :class=`[
+      'block-content__buttons--' + props.button_alignment,
+      'block-content__buttons--' + props.text_alignment,
+      {
+        'block-content__buttons--forceCenter': forceCenter,
+        'block-content__buttons--forceLeft': forceLeft,
+        'block-content__buttons--forceRight': forceRight
+      }
+    ]`
+  )
+    BlockButton.block-content__button(
+      v-for='(btn, i) in props.buttons',
+      :key='`btn-${i}`',
+      :class=`{
+        'block-content__button--inline': props.button_alignment === 'inline' && props.buttons.length > 1,
+        'block-content__button--stacked': props.button_alignment === 'stacked' && props.buttons.length > 1
+      }`,
+      :props='btn.button'
+    )

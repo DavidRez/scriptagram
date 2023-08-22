@@ -1,0 +1,22 @@
+.page-sections
+  .page-sections__section-container(
+    v-for='(section, i) in props'
+    :class='`component-margins--` + section.component_margins'
+    :id='section.hash'
+    :key='`section-${i}`'
+  )
+    .page-sections__section(:id='`${section.acf_fc_layout}-${i}`')
+      div(v-if='section.acf_fc_layout === null')
+      BlockAccordion(v-else-if='section.acf_fc_layout === `accordion`', :props='section', :class='`component-padding--` + section.component_padding')
+      BlockForm(v-else-if='section.acf_fc_layout === `form`', :props='section', :class='`component-padding--` + section.component_padding')
+      BlockGallerySlider(v-else-if='section.acf_fc_layout === `gallery_slider`', :props='section', :class='`component-padding--` + section.component_padding')
+      BlockTiles(v-else-if='section.acf_fc_layout === `tiles`', :props='section', :class='`component-padding--` + section.component_padding')
+      Hero(v-else-if='section.acf_fc_layout === `hero`', :props='section', :class='`component-padding--` + section.component_padding')
+
+      // devMode is toggled in the global custom-post in the API and is only effective when the site is run locally.
+      DevModeOverlay(
+        v-if='$store.state.devInspector'
+        :pageSectionSlug='section.acf_fc_layout'
+        :props='section'
+      )
+  DevModeTools(v-if='$store.state.devTools')

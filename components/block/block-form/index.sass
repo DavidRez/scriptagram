@@ -1,0 +1,15 @@
+.block-form
+
+  &__container
+    @include container
+
+  &__col
+    &--content
+      @include col (5)
+      @include tablet
+        margin-bottom: 2rem
+        padding-right: 0
+      padding-right: #{$gutter * 2}
+
+    &--form
+      @include col (7)

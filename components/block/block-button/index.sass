@@ -1,0 +1,41 @@
+.block-button
+  width: fit-content
+
+  &__button
+    cursor: pointer
+
+    &--primary
+      @include button-primary(#{var(--primary)}, $white)
+
+    &--secondary
+      @include button-secondary(#{var(--accent)}, $white)
+
+    &--underline
+      @include button-underline($gray, #{var(--primary)})
+
+      .block-button--black &
+        @include button-underline($black, $gray)
+
+      .block-button--white &
+        @include button-underline($white, $gray)
+
+      .block-button--primary &
+        @include button-underline(#{var(--primary)}, $gray)
+
+      .block-button--accent &
+        @include button-underline(#{var(--gray-1)}, $white)
+
+    &-icon
+      margin-right: rem-calc(12)
+      max-width: rem-calc(26)
+      height: rem-calc(26)
+
+      svg
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        max-height: 100%
+
+  a
+    text-decoration: none
