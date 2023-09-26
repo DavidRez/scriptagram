@@ -85,12 +85,14 @@ export default {
           this.$refs.posts.forEach((post, i) => {
             const delay = 0.1 + (0.1 * i)
             tl.fromTo(post.$el, {
-              y: '96'
+              y: '96',
+              opacity: 0
             }, {
               y: '0',
+              opacity: 1,
               delay,
               duration: 0.75,
-              ease: 'bounce'
+              ease: 'power1'
             }, '<+=0.1')
           })
         }
