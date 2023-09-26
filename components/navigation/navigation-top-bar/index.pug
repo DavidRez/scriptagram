@@ -1,0 +1,7 @@
+.navigation-top-bar(:class='{ "navigation-top-bar--scrolled": isScrolled, "navigation-top-bar--hide": hideNav || props.top_bar.hide_on_mobile }' ref='main')
+  .navigation-top-bar__container
+    MenuContact(:props='props' compact inline)
+    MenuSocialMedia(:props='props')
+    .navigation-top-bar__close(role='button' aria-label='close top bar' @click='closeNav()' @keyup.enter='closeNav()' tabindex='0')
+      span 
+      span

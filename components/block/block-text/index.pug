@@ -1,0 +1,4 @@
+section.block-text(:class='{ "block-text--reverse": props.reverse }' ref='container')
+  .block-text__container
+    .block-text__col(ref='col')
+      BlockContent.block-text__content(:props='props.content')

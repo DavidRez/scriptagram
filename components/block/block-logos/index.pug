@@ -1,0 +1,10 @@
+section.block-logos
+  .block-logos__container(ref='container')
+    BlockContent.block-logos__content(:props='props.content')
+    .block-logos__logos
+      BaseIcon.block-logos__logo(
+        v-for='(logo, i) in props.logos',
+        :key='`logo-${i}`',
+        :name='logo.svg',
+        ref='logos'
+      )

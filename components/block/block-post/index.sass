@@ -1,0 +1,256 @@
+.block-post
+  position: relative
+
+  &__loading
+    text-align: center
+
+  &__container
+    @include container
+    position: relative
+    flex-direction: column
+    align-items: center
+    margin: 1rem auto
+    background: var(--bg-1)
+    padding: 1rem !important
+
+  &__circle
+    display: flex
+    position: absolute
+    align-items: center
+    justify-content: center
+    transition: all .1s ease
+    z-index: 0
+    transform-origin: right center
+
+    svg
+      width: 100%
+      height: auto
+
+    &--left
+
+      &.block-post__circle--small
+        @include tablet-lg
+          left: 0%
+        left: -10%
+
+
+    &--right
+
+      &.block-post__circle--medium
+        @include tablet-lg
+          right: -10%
+        right: -25%
+
+
+    &--top
+      @include tablet
+        top: 0%
+      top: 5%
+
+    &--middle
+      top: 0
+      bottom: 0
+      margin:  auto
+
+    &--bottom
+      bottom: 0%
+
+    &--small
+      @include laptop
+        width: rem-calc(75)
+      @include tablet
+        width: rem-calc(65)
+      width: rem-calc(100)
+
+    &--medium
+      @include laptop
+        width: rem-calc(200)
+      @include tablet
+        width: rem-calc(100)
+      width: rem-calc(300)
+
+  &__title
+    @extend %margin-bottom--sm
+    line-height: 1
+
+  &__top
+    @include tablet
+      flex-direction: column-reverse
+    @include phone-land-lg
+      flex-direction: row
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    width: 100%
+
+  &__headers
+    @include col (5)
+    @include tablet
+      margin-bottom: 2rem
+    @include phone-land-lg
+      width: 40%
+
+  &__title
+    @extend %margin-bottom
+    text-align: left
+
+  &__date
+    @extend %body
+    @extend %margin-bottom--sm
+    text-align: left
+
+  &__social-group
+    display: flex
+
+  &__social-circle
+    &:focus-visible
+      @include focus($color: var(--accent))
+
+    &:not(:first-of-type)
+      margin-left: 1rem
+  
+  &__social-icon
+    @include hover-supported
+      svg
+        transform: scale(1.1)
+        fill: var(--pink)
+    @include nexus
+      align-items: flex-start
+      justify-content: flex-start
+      width: rem-calc(42)
+      height: rem-calc(42)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: fill .2s ease
+    height: 1rem
+
+    svg
+      @include nexus
+        max-height: 1rem
+      transition: all .2s ease
+      height: 100%
+      fill: var(--primary)
+
+  &__image
+    @include col (7)
+    @include tablet-lg
+      margin-bottom: 1rem
+      border-radius: rem-calc(35)
+      padding-top: 65%
+    @include phone-land-lg
+      border-radius: rem-calc(20)
+      padding-top: 35%
+      width: 55%
+    position: relative
+    border-radius: rem-calc(50)
+    padding-top: 40%
+    overflow: hidden
+
+    .base-image__image
+      object-fit: cover
+
+  &__body
+    @extend %margin-top
+    @extend %margin-bottom
+    @extend %wysiwyg-text
+  
+    a
+      transition: all .25s ease
+      overflow-wrap: break-word
+      word-wrap: break-word
+      color: var(--primary)
+      font-weight: 500
+
+      &:hover
+        color: var(--accent)
+
+    h2,h3,h4
+      @extend %margin-bottom--sm
+    h2
+      @extend %h3
+    h3
+      @extend %h4
+    h4
+      @extend %body
+      font-weight: 600
+
+  &__btns
+    @extend %margin-top--md
+    @extend %margin-bottom--lg
+    display: flex
+    justify-content: space-between
+    width: 100%
+
+    &--right
+      justify-content: flex-end
+
+  &__btn
+    @include hover-supported
+      span
+        color: var(--pink)
+      path
+        stroke: var(--pink)
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    border: none
+    background: none
+    cursor: pointer
+    height: 1rem
+    
+    &:focus-visible
+      @include focus($color: var(--bg1))
+
+    &-icon-container
+      position: relative
+      width: 1rem
+      height: 1rem
+
+      &--next
+        margin-left: .5rem
+
+      &--prev
+        transform: rotate(180deg)
+        margin-right: .5rem
+
+    &-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100%
+      height: 100%
+      transform-origin: center
+
+      svg
+        width: 100%
+        height: 100%
+        path
+          transition: all .2s ease
+          stroke: var(--primary)
+
+    span
+      @extend %button
+      transition: all .2s ease
+      line-height: 1
+      color: var(--primary)
+
+  &__banner
+    @extend %margin-top--lg
+    @include col (10)
+    @include tablet
+      padding: 2rem 1rem
+    @include nexus
+      padding: 1rem
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    border-radius: rem-calc(25)
+    box-shadow: 0 0 10px rgba($black, 0.1)
+    background: $white
+    padding: 2rem 0
+
+  &__banner-title
+    @extend %margin-bottom--sm

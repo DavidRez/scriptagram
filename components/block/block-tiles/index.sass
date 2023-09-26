@@ -1,238 +1,60 @@
 .block-tiles
 
-  &--center
-    text-align: center
-
   &__container
     @include container
-
-  &__col
-    &--full
-      @include col (12)
-      position: relative
-
-  &__title-row
-    &--button
-      display: flex
-      flex-wrap: wrap
-      justify-content: space-between
-      gap: rem-calc(12)
-      width: 100%
-
-      .block-tiles--center &
-        flex-wrap: wrap
+    justify-content: center
 
   &__title
-    .block-tiles--center &
-      width: 100%
-      text-align: center
-
-  &__subtitle
-    margin-top: rem-calc(16)
-    text-transform: uppercase
-
-  &__body
-    margin-top: rem-calc(8)
+    @extend %title
 
   &__tiles
-    @include tablet
-      padding-bottom: rem-calc(16)
-    @include phone-land-lg
-      padding-bottom: rem-calc(12)
     display: flex
-    position: relative
-    margin-top: rem-calc(32)
+    flex-wrap: wrap
+    justify-content: center
     width: 100%
 
-    &--grid
-      flex-wrap: wrap
-      gap: calc(#{$gutter} / 2)
-
-      .block-tiles--center &
-        justify-content: center
-
-    &--slider
-      flex-wrap: nowrap
-      padding-bottom: rem-calc(24)
-      overflow-x: scroll
-      scroll-snap-type: x mandatory
-
-    &::-webkit-scrollbar
-      cursor: pointer
-      width: rem-calc(5)
-      height: rem-calc(10)
-
-    &::-webkit-scrollbar-track
-      background-color: #bdbdbd
-
-    &::-webkit-scrollbar-thumb
-      background: #777
-
   &__tile
+    @include col (3.75)
     display: flex
-    position: relative
     flex-direction: column
-    flex-shrink: 1
-    border: solid rem-calc(2) transparent
-    scroll-snap-align: start
+    align-items: flex-start
 
-    &--top
-      margin-top: rem-calc(12)
-
-    &-inner
-      display: flex
-      flex-direction: column
-      flex-grow: 1
-
-    // START - Grid vs Slider Layouts //////////////////////////////////////////////
-
-    .block-tiles__tiles--slider &
-      flex-shrink: 0
-      margin: 0 calc(#{$gutter} / 2)
-
-      &:first-child
-        margin-left: 0
-
-      &:last-child
-        margin-right: 0
-
-    &:focus-visible
-      outline: none
-      border: solid rem-calc(2) #777
-
-    .block-tiles__tiles--grid
-      @include phone-lg
-        width: 100%
-
-    .block-tiles__tiles--grid--2-columns &
-      width: calc(50% - #{$gutter / 2})
-
-    .block-tiles__tiles--grid--3-columns &
+    &:nth-child(-n+2)
       @include tablet
-        width: calc(50% - #{$gutter / 2})
-      width: calc(33.3333% - #{$gutter / 2})
+        margin-bottom: 2rem
+      @include phone-land-lg
+        margin-bottom: 2rem
 
-    .block-tiles__tiles--grid--4-columns &
-      @include tablet
-        width: calc(50% - #{$gutter / 2})
-      width: calc(25% - #{$gutter / 2})
-
-    .block-tiles__tiles--slider--2-columns &
-      @include tablet-md
-        width: 44%
+    &:not(:last-of-type)
       @include nexus
-        width: 42%
-      @include phone-lg
-        width: 86%
-      width: 46%
+        margin-bottom: 3rem
 
-    .block-tiles__tiles--slider--3-columns &
-      @include tablet-md
-        width: 29%
-      @include tablet
-        width: 44%
-      @include nexus
-        width: 42%
-      @include phone-lg
-        width: 86%
-      width: 30%
-
-    .block-tiles__tiles--slider--4-columns &
-      @include desktop
-        width: 22.5%
-      @include laptop
-        width: 22%
-      @include laptop-sm
-        width: 21.5%
-      @include tablet-md
-        width: 29%
-      @include tablet
-        width: 44%
-      @include nexus
-        width: 42%
-      @include phone-lg
-        width: 86%
-      width: 22%
-
-    // END - Grid vs Slider Layouts //////////////////////////////////////////////
-
-    &--border
-      .block-tiles__tile-inner
-        border: 1px solid #323232
-
-    &-content
-      flex-grow: 1
-      padding-top: rem-calc(24)
-
-      &--overlay
-        @extend %absolute
-        display: flex
-        flex-direction: column
-        flex-grow: 0
-        justify-content: center
-        transition: opacity .3s ease
-        opacity: 0
-        z-index: -1
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), #BDBDBD
-        padding: rem-calc(24)
-        text-align: center
-        color: $white
-
-        .block-tiles__tile:focus-visible &,
-        .block-tiles__tile:hover &
-          opacity: 1
-          z-index: 2
-
-      &--background,
-      &--border
-        @include nexus
-          padding: rem-calc(18)
-        padding: rem-calc(24)
-
-      &--background
-        background-color: var(--bg-1)
-
-    &-title
-      margin-bottom: rem-calc(16)
-
-      .block-tiles__tile-inner &
-        margin-bottom: 0
-
-    &-body--margin
-      margin-top: rem-calc(8)
+  &__image-container
+    @extend %margin-bottom--sm
+    position: relative
+    margin-right: auto
+    margin-left: auto
+    padding-top: 80%
+    width: 80%
+    overflow: hidden
 
   &__image
     @extend %absolute
 
-    &-container
-      position: relative
-      padding-top: 100%
-      width: 100%
+    &.base-image
+      position: absolute
 
-      .base-image
-        position: absolute
-        object-fit: cover
+    .base-image__image
+      object-fit: contain
 
-      .block-tiles__tiles--slider--2-columns &
-        padding-top: 60%
-
-  &__buttons
-    display: flex
-    gap: #{$gutter}
-
-    .block-tiles--center &
-      justify-content: center
-      width: 100%
-
-    &--bottom
-      margin-top: rem-calc(32)
+  &__tile-title
+    flex: 2
+    width: 100%
+    text-align: center
 
   &__button
-    max-width: max-content
-
-    .block-tiles--center &
-      margin-right: auto
-      margin-left: auto
-
-    &--tile
-      margin-top: rem-calc(24)
+    @extend %margin-top--lg
+    display: flex
+    margin-right: auto
+    margin-left: auto
+    width: auto

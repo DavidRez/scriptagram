@@ -2,22 +2,38 @@ const router = [
   {
     name: 'Home',
     path: '/',
-    navigation: true
+    navigation: false,
+    footer: true
+  },
+  {
+    name: 'Patient Solutions',
+    path: '/patient-solutions',
+    navigation: true,
+    footer: true
+  },
+  {
+    name: 'Ortho Screening',
+    path: '/ortho-screening',
+    navigation: true,
+    footer: true
+  },
+  {
+    name: 'Braces Academy',
+    path: '/braces-academy',
+    navigation: true,
+    footer: true
   },
   {
     name: 'About',
     path: '/about',
-    navigation: true
+    navigation: true,
+    footer: true
   },
   {
-    name: 'Blog',
-    path: '/blog',
-    navigation: true
-  },
-  {
-    name: 'Eric',
-    path: '/dev-eric',
-    navigation: true
+    name: 'Contact',
+    path: '/contact',
+    navigation: true,
+    footer: true
   }
 ]
 

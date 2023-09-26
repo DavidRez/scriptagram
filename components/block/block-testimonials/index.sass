@@ -1,0 +1,153 @@
+.block-testimonials
+  &__container
+    @include container
+    justify-content: center
+
+  &__title
+    @extend %title
+    width: 100%
+    text-align: center
+
+  &__col
+    @include col (12)
+    position: relative
+    transition: all .2s ease
+    overflow-x: auto
+    overflow-y: hidden
+
+    &::-webkit-scrollbar
+      cursor: pointer
+      width: rem-calc(5)
+      height: rem-calc(10)
+
+    &::-webkit-scrollbar-track
+      border-radius: 5px
+      background-color: var(--accent1)
+
+    &::-webkit-scrollbar-thumb
+      border-radius: 5px
+      background: var(--primary)
+      min-height: 50px
+
+  &__slider
+    display: flex
+    scroll-snap-type: x mandatory
+    width: fit-content
+
+  &__slider--centered
+    justify-content: center
+    width: 100%
+  
+  &__slide
+    @include nexus
+      flex-direction: column
+    display: inline-flex
+    position: relative
+    flex-direction: row
+    align-items: center
+    border-radius: rem-calc(25)
+    background: var(--bg-2)
+    scroll-snap-align: start
+    padding-bottom: 1rem
+
+    &:not(:last-of-type)
+      margin-right: 2rem
+  
+  &__image
+    @include nexus
+      margin-right: auto
+      margin-bottom: 2rem
+      margin-left: auto
+      width: 30vw
+      height: 30vw
+    display: inline-block
+    margin-right: 2rem
+    border: 4px solid var(--primary)
+    border-radius: 50%
+    width: rem-calc(175)
+    height: rem-calc(175)
+    overflow: hidden
+
+    &.base-image
+      position: relative
+
+    .base-image__image
+      position: absolute
+      width: 100%
+      height: 100%
+
+  &__content
+    // @include nexus
+    //   border: none
+    //   padding: 0
+    display: flex
+    position: relative
+    flex: 2
+    flex-direction: column
+    border: 4px solid var(--primary)
+    border-radius: rem-calc(25)
+    background: $white
+    padding: 1rem
+    height: 100%
+
+    &::before
+      @include nexus
+        display: none
+      position: absolute
+      top: 0
+      bottom: 0
+      left: rem-calc(-18)
+      transform: rotate(45deg)
+      z-index: 0
+      margin: auto
+      border-top: 4px solid transparent
+      border-right: 4px solid transparent
+      border-bottom: 4px solid var(--primary)
+      border-left: 4px solid var(--primary)
+      width: rem-calc(25)
+      height: rem-calc(25)
+      content: ''
+
+    &::after
+      @include nexus
+        display: none
+      position: absolute
+      top: 0
+      bottom: 0
+      left: rem-calc(-12.5)
+      transform: rotate(45deg)
+      z-index: 0
+      margin: auto
+      border-top: 4px solid transparent
+      border-right: 4px solid transparent
+      border-bottom: 4px solid $white
+      border-left: 4px solid $white
+      background: $white
+      width: rem-calc(25)
+      height: rem-calc(25)
+      content: ''
+
+      &:focus-visible
+        @include focus
+
+    &-from,
+    &-body,
+    &-name
+      position: relative
+      z-index: 3
+
+    &-from
+      @extend %margin-bottom
+      color: var(--primary)
+      font-size: rem-calc(15)
+      font-weight: 600
+
+    &-body
+      @extend %margin-bottom--sm
+      flex: 2
+
+    &-label
+      color: var(--primary)
+
+      &--primary
+        font-weight: 600

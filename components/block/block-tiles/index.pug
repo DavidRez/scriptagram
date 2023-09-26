@@ -1,62 +1,17 @@
-section.block-tiles(:class='{ "block-tiles--center": props.center_text }')
+section.block-tiles
   .block-tiles__container
-    .block-tiles__col.block-tiles__col--full
-      .block-tiles__title-row(:class=' { "block-tiles__title-row--button": props.button_location === "top" }')
-        h2.block-tiles__title(v-if='props.title', v-html='props.title')
-        .block-tiles__buttons(v-if='props.button_location === "top" && props.buttons.length')
-          BlockButton(
-            v-for='(b, i) in props.buttons',
-            :key='`button-${i}`',
-            :props='b.button'
-          )
-      h3.block-tiles__subtitle(v-if='props.subtitle', v-html='props.subtitle')
-      .block-tiles__body(v-if='props.body', v-html='props.body')
-  .block-tiles__container
-    .block-tiles__col.block-tiles__col--full
-      .block-tiles__tiles(:class='[ `block-tiles__tiles--${slider ? "slider" : "grid"}`, `block-tiles__tiles--${slider ? "slider" : "grid"}--${props.columns}-columns` ]')
-        .block-tiles__tile(
-          v-for='(t, i) in props.tiles',
-          :key='`tile-${i}`',
-          :class='{ "block-tiles__tile--border": props.border }',
-          tabindex=0
-        )
-          h3.block-tiles__tile-title.block-tiles__tile-title--top(v-if='t.title && props.tile_title_location === "top"', v-html='t.title')
-          .block-tiles__tile-inner
-            .block-tiles__image-container(v-if='props.tile_images')
-              BaseImage.block-tiles__image(
-                v-if='t.image_type === "photo"',
-                v-bind='t.photo.image',
-                forceVisible
-              )
-              BaseIcon.block-tiles__image(
-                v-if='t.image_type === "icon"',
-                :name='t.icon'
-              )
-              .block-tiles__tile-content.block-tiles__tile-content--overlay(v-if='props.image_overlay')
-                .block-tiles__tile-body(v-if='t.body', v-html='t.body')
-                BlockButton.block-tiles__button.block-tiles__button--tile(
-                  v-if='props.tile_buttons && t.button.button.label',
-                  :props='t.button.button'
-                )
-            .block-tiles__tile-content.block-tiles__tile-content--border(
-              :class='{ "block-tiles__tile-content--background": props.background_color }'
-            )
-              h3.block-tiles__tile-title(v-if='t.title && props.tile_title_location === "bottom"', v-html='t.title')
-              h4.block-tiles__tile-subtitle(v-if='t.subtitle', v-html='t.subtitle')
-              .block-tiles__tile-body(
-                v-if='!props.image_overlay && t.body',
-                :class='{ "block-tiles__tile-body--margin": t.title || t.subtitle }',
-                v-html='t.body'
-              )
-              BlockButton.block-tiles__button.block-tiles__button--tile(
-                v-if='props.tile_buttons && t.button.button.label',
-                :props='t.button.button'
-              )
-  .block-tiles__container(v-if='props.button_location === "bottom" && props.buttons.length')
-    .block-tiles__col.block-tiles__col--full
-      .block-tiles__buttons.block-tiles__buttons--bottom
+    h2.block-tiles__title(v-if='props.title' ref='title') {{ props.title }}
+    .block-tiles__tiles(ref='container')
+      .block-tiles__tile(
+        v-for='(tile, i) in props.tiles',
+        :key='`tile-${i}`',
+        ref='tiles'
+      )
+        .block-tiles__image-container
+          BaseImage.block-tiles__image(v-bind='tile.image')
+        h3.block-tiles__tile-title(v-if='tile.title') {{ tile.title }}
         BlockButton.block-tiles__button(
-          v-for='(b, i) in props.buttons',
-          :key='`button-${i}`',
-          :props='b.button'
+          v-if='tile.button'
+          :props='tile.button'
         )
+    

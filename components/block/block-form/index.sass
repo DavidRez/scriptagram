@@ -2,14 +2,11 @@
 
   &__container
     @include container
+    justify-content: center
 
   &__col
-    &--content
-      @include col (5)
-      @include tablet
-        margin-bottom: 2rem
-        padding-right: 0
-      padding-right: #{$gutter * 2}
+    @include col (10)
 
-    &--form
-      @include col (7)
+    &--content
+      margin: 2rem 0
+

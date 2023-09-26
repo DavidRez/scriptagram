@@ -1,0 +1,9 @@
+section.block-team
+  .block-team__container(ref='container')
+    h2.block-team__title(v-if='props.title' ref='title') {{ props.title }}
+    .block-team__card-container
+      .block-team__card(v-for='(member, i) in props.members', :key='`member-${i}`' ref='card' tabindex='0')
+        BaseImage.block-team__image(v-bind='member.image' ref='images')
+        .block-team__content(ref='content')
+          h3.block-team__name(v-if='member.name' v-html='member.name')
+          .block-team__job-title(v-if='member.position' v-html='member.position')

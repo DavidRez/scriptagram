@@ -16,7 +16,11 @@ export default {
   },
   data: () => ({
     forms: null,
+    videos: null,
+    events: null,
+    posts: null,
     global: null,
+    testimonials: null,
     showDevModeBanner: false
   }),
   watch: {
@@ -24,8 +28,16 @@ export default {
   },
   async fetch () {
     this.forms = await getCustomPosts('forms')
+    this.videos = await getCustomPosts('videos')
+    this.events = await getCustomPosts('events', 9)
+    this.posts = await getCustomPosts('posts', 9)
     this.global = await setData('global', 'globalData')
+    this.testimonials = await setData('testimonials', 'globalData')
 
+    this.$store.dispatch('SET_VIDEOS', this.videos)
+    this.$store.dispatch('SET_EVENTS', this.events)
+    this.$store.dispatch('SET_BLOG', this.posts)
+    this.$store.dispatch('SET_TESTIMONIALS', this.testimonials.testimonials)
     this.$store.dispatch('SET_GLOBAL', this.global)
     this.$store.dispatch('SET_FORMS', this.forms)
   },
@@ -47,6 +59,7 @@ export default {
         this.$store.dispatch('IS_TABLET', window.innerWidth <= 768)
         this.$store.dispatch('IS_TABLET_MD', window.innerWidth <= 880)
         this.$store.dispatch('IS_TABLET_LG', window.innerWidth <= 1024)
+        this.$store.dispatch('IS_DESKTOP', window.innerWidth >= 1681)
       })
     },
     onRouteChange () {

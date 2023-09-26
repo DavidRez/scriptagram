@@ -1,0 +1,16 @@
+.footer-desktop
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+  &__col
+    &:first-of-type
+      @include col (6)
+    &:nth-of-type(2)
+      @include col (5)
+    &:last-of-type
+      width: rem-calc(45)
+
+  &__row
+    &:first-of-type
+      margin-bottom: 2rem

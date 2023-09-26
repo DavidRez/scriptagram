@@ -2,31 +2,50 @@
 
 <script>
 import BlockAccordion from '~/components/block/block-accordion'
+import BlockCards from '~/components/block/block-cards'
+import BlockCountUpCards from '~/components/block/block-count-up-cards'
+import BlockEvents from '~/components/block/block-events'
+import BlockFloatingCards from '~/components/block/block-floating-cards'
 import BlockForm from '~/components/block/block-form'
-import BlockGallerySlider from '~/components/block/block-gallery-slider'
+import BlockGraphicTextBanner from '~/components/block/block-graphic-text-banner'
+import BlockImageText from '~/components/block/block-image-text'
+import BlockLogos from '~/components/block/block-logos'
+import BlockTeam from '~/components/block/block-team'
+import BlockTestimonials from '~/components/block/block-testimonials'
+import BlockText from '~/components/block/block-text'
 import BlockTiles from '~/components/block/block-tiles'
-import DevModeTools from '~/components/dev-mode/dev-mode-tools'
-import DevModeOverlay from '~/components/dev-mode/dev-mode-overlay'
+import BlockVideos from '~/components/block/block-videos'
+// import DevModeOverlay from '~/components/dev-mode/dev-mode-overlay'
 import Hero from '~/components/hero/hero'
 
 export default {
   components: {
     BlockAccordion,
+    BlockCards,
+    BlockCountUpCards,
+    BlockEvents,
+    BlockFloatingCards,
     BlockForm,
-    BlockGallerySlider,
+    BlockGraphicTextBanner,
+    BlockImageText,
+    BlockLogos,
+    BlockTeam,
+    BlockTestimonials,
+    BlockText,
     BlockTiles,
-    DevModeTools,
-    DevModeOverlay,
+    BlockVideos,
+    // DevModeOverlay,
     Hero
   },
   props: {
-    global: {
-      type: Object,
-      default: () => ({})
-    },
     props: {
       type: Array,
       default: () => ([])
+    }
+  },
+  computed: {
+    global () {
+      return this.$store.state.global
     }
   },
   mounted () {

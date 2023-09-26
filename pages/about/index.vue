@@ -11,8 +11,7 @@ export default {
   },
   async asyncData () {
     const props = await setData('about')
-    const global = await setData('global', 'globalData')
-    return { props, global }
+    return { props }
   },
   head () {
     return setMeta(this.props)

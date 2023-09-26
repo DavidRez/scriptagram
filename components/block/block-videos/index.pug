@@ -1,0 +1,42 @@
+section.block-videos
+  .block-videos__container
+    .block-videos__titles(v-if='props.title || props.subtitle')
+      h2.block-videos__title(v-if='props.title', v-html='props.title' ref='title')
+      h3.block-videos__subtitle(v-if='props.subtitle', v-html='props.subtitle' ref='subtitle')
+    .block-videos__col(v-if='videos' ref='col')
+      .block-videos__slider(:class='{ "block-videos__slider--centered": videos.length < 3 }' ref='slider')
+        BlockPreviewPost.block-videos__slide(
+          v-for='(slide, i) in videos',
+          :key='`video-${i}`',
+          :style='{ width: width }'
+          :props='slide.post.video.video'
+          :image='slide.post.video.video.poster'
+          :compact='props.compact'
+          video
+          @click.native='modalSrc(slide.post.video.video)'
+          ref='slides')
+        //- .block-videos__slide(
+        //-   v-for='(slide, i) in videos',
+        //-   :key='`video-${i}`',
+        //-   :style='{ width: width }'
+        //-   @click='modalSrc(slide.video.video)'
+        //-   ref='slides'
+        //- )
+        //-   .block-videos__slide-image-container
+        //-     BaseIcon.block-videos__slide-play(v-if='!props.full' name='play-button')
+        //-     .block-videos__slide-overlay
+        //-     BaseImage.block-videos__slide-image(:src='slide.video.video.poster.src' :webp='slide.video.video.poster.webp' imageBackground forceVisible)
+        //-   .block-videos__slide-title(v-if='props.full')
+        //-     .block-videos__slide-title--circle
+        //-       BaseIcon.block-videos__slide-play(name='play-button')
+        //-     h3.block-videos__slide-title--label(v-if='slide.video.video.title') {{ slide.video.video.title }}
+        //-   .block-videos__slide-body(v-if='slide.video.video.description && props.full') {{ slide.video.video.description }}
+    BlockButton.block-videos__button(
+      v-if='props.button.labrl'
+      :props='props.button'
+      ref='button'
+    )
+
+  BaseModal.block-videos__modal(v-if='modalOpen', :modalOpen='modalOpen' @closemodal='modalOpen = $event' role='dialog' aria-modal='true')
+    video.block-videos__video(:src='video.src' :alt='video.title' muted defaultMuted loop playsinline controls=true)
+    

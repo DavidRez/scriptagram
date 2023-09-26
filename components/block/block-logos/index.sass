@@ -1,0 +1,35 @@
+.block-logos
+
+  &__container
+    @include container
+    justify-content: center
+
+  &__content
+    @extend %margin-bottom--md
+    @include col (8)
+
+  &__logos
+    @include col (10)
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+  &__logo
+    @include nexus
+      margin: .5rem .75rem
+      max-width: 85vw
+      height: rem-calc(70)
+    margin: .5rem 1rem
+    padding: .5rem
+
+    &.base-icon
+      display: flex
+      align-items: center
+      justify-content: center
+      height: rem-calc(80)
+
+
+    svg
+      position: relative
+      width: auto
+      height: 100%

@@ -1,0 +1,11 @@
+section.block-floating-cards(ref='container')
+  .block-floating-cards__container
+    .block-floating-cards__card(v-for='(card, i) in props.cards' :key='`cards-${i}`' ref='cards')
+      .block-floating-cards__card-content
+        .block-floating-cards__card-header
+          BaseImage.block-floating-cards__card-image(v-if='card.header.image' v-bind='card.header.image')
+          h2.block-floating-cards__card-label(v-if='card.header.label') {{ card.header.label }}
+        .block-floating-cards__card-subheader(v-if='card.subheader') {{ card.subheader }}
+        .block-floating-cards__card-body(v-if='card.body' v-html='card.body')
+        .block-floating-cards__card-disclaimer(v-if='card.disclaimer' v-html='card.disclaimer')
+      BlockButton.block-floating-cards__card-button(v-if='card.button' :props='card.button')

@@ -1,0 +1,41 @@
+section.block-post(:style='{ marginTop: navHeight }')
+    
+  .block-post__container(ref='container')
+    BaseIcon.block-post__circle.block-post__circle--left.block-post__circle--top.block-post__circle--small(name='yellow-green')
+    BaseIcon.block-post__circle.block-post__circle--left.block-post__circle--bottom.block-post__circle--small(name='aqua-green')
+    BaseIcon.block-post__circle.block-post__circle--right.block-post__circle--bottom.block-post__circle.block-post__circle--medium(name='yellow-aqua')
+    .block-post__top
+      .block-post__headers
+        //- .block-post__btn(aria-label='Back' tabindex='0' @click='$router.back()' ref='button')
+        //-   .block-post__btn-icon-container.block-post__btn-icon-container--prev
+        //-     BaseIcon.block-post__btn-icon(name='arrow')
+        //-   span Back
+        h1.block-post__title(v-html='props.title' ref='title')
+        .block-post__date(v-html='props.date' ref='date')
+        .block-post__social-group(ref='social')
+          a.block-post__social-circle(:href='`https://www.facebook.com/sharer/sharer.php?u=${ postUrl }`' target="_blank" rel="noopener noreferrer" aria-label='post blog post on Facebook')
+            BaseIcon.block-post__social-icon(name='facebook-share')
+          
+          a.block-post__social-circle(:href='`https://www.linkedin.com/shareArticle?url=${ postUrl }`' target="_blank" rel="noopener noreferrer" aria-label='post blog post on LinkedIn')
+            BaseIcon.block-post__social-icon(name='linkedin-share')
+
+          a.block-post__social-circle(:href='`https://twitter.com/share?url=${ postUrl }`' target="_blank" rel="noopener noreferrer" aria-label='post blog post on Twitter')
+            BaseIcon.block-post__social-icon(name='twitter-share')
+      BaseImage.block-post__image(v-if='props.image.image' v-bind='props.image.image' ref='image')
+    .block-post__body(v-if='props.body' v-html='props.body' ref='body')
+    .block-post__btns(:class='{ "block-post__btns--right": !prevPost && nextPost }')
+    
+      nuxt-link.block-post__btn(v-if='prevPost', :to='{ path: prevPost }' aria-label='Previous Article' tabindex='0' ref='left')
+        .block-post__btn-icon-container.block-post__btn-icon-container--prev
+          BaseIcon.block-post__btn-icon(name='arrow')
+        span Previous
+
+      nuxt-link.block-post__btn(v-if='nextPost', :to='{ path: nextPost }' aria-label='Next Article' role='button' tabindex='0' ref='right')
+        span Next
+        .block-post__btn-icon-container.block-post__btn-icon-container--next
+          BaseIcon.block-post__btn-icon(name='arrow')
+
+
+    .block-post__banner(ref='banner')
+      h2.block-post__banner-title {{ title }}
+      BlockButton.block-post__banner-button(:props='$store.state.global.calendly.button')

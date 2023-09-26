@@ -1,2 +1,172 @@
 .navigation
-  padding: 1rem
+  position: fixed
+  top: 0
+  left: 0
+  transition: all .35s ease-in
+  z-index: 99
+  background: $white
+  width: 100%
+  max-height: 100vh
+
+  &--scrolled
+    box-shadow: 0 0 rem-calc(5) rgba($black, .25)
+
+  &__container
+    @include container--large
+    @include tablet
+      height: rem-calc(75)
+    @include nexus
+      height: rem-calc(65)
+    @include phone-land-lg
+      height: rem-calc(65)
+    @include phone
+      height: rem-calc(55)
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    transition: all .35s ease-in
+    padding: .35rem 1rem
+    width: 100%
+    height: rem-calc(100)
+
+    .navigation--scrolled &
+      @include nexus
+        height: rem-calc(55)
+      @include phone-land-lg
+        height: rem-calc(55)
+      @include phone
+        height: rem-calc(55)
+      height: rem-calc(90)
+
+  &__logo
+    @include tablet
+      max-width: 30vw
+    @include phone-land-lg
+      width: auto
+      height: 100%
+    margin-right: 2rem
+    width: auto
+    max-width: rem-calc(300)
+    height: 100%
+
+    .base-icon
+      @include phone-land-lg
+        width: auto
+        height: 100%
+      display: flex
+      align-items: center
+      justify-content: center
+      height: 100%
+
+      svg
+        width: auto
+        height: 100%
+
+    &:focus-visible
+      @include focus
+
+  &__right
+    display: flex
+    flex: 4
+    align-items: center
+    justify-content: flex-end
+
+  &__cta
+    @include tablet
+      display: none
+    // margin-left: 1.5rem
+
+    &:focus-visible
+      @include focus
+
+  &__hamburger
+    @include hamburger-basic(var(--primary), .25s, 2rem, rem-calc(24))
+    transition: all .25s ease-in
+    z-index: unset
+    margin-left: 1.5rem
+    cursor: pointer
+    width: rem-calc(48)
+
+    @include hover-supported
+      .navigation__hamburger-label
+        transform: translateY(10px)
+
+      .navigation__hamburger
+        span:first-child
+          top: calc(100% - 3px)
+
+    &:focus-visible
+      @include focus
+
+  &__overlay
+    position: fixed
+    top: 0
+    left: 0
+    transition: all .25s ease
+    z-index: 13
+    background: rgba(var(--purple-rgb), .5)
+    width: 100%
+    height: 100%
+    backdrop-filter: blur(5px)
+
+  &__drawer
+    @include nexus
+      padding: 4rem 1rem 3rem
+    @include phone-land-lg
+      padding: 4rem 1rem 3rem
+    position: fixed
+    top: 0
+    right: 0
+    transition: all .5s ease
+    z-index: 14
+    background: var(--primary)
+    padding: rem-calc(75) rem-calc(70) rem-calc(140)
+    width: 100%
+    max-width: rem-calc(500)
+    height: 100vh
+    overflow-y: scroll
+
+  &__close
+    @include hover-supported
+      animation: spin linear 1s forwards
+      span
+        background: var(--secondary)
+    display: block
+    position: absolute
+    top: 1rem
+    right: 1rem
+    cursor: pointer
+    width: 2rem
+    height: 2rem
+
+    span
+      display: block
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      transition: all .2s ease
+      margin: auto
+      border-radius: rem-calc(10)
+      background: $white
+      width: 3px
+      height: 100%
+      transform-origin: center
+
+      &:first-of-type
+        transform: rotate(45deg)
+
+      &:last-of-type
+        transform: rotate(-45deg)
+
+    &:focus-visible
+      @include focus
+
+  @keyframes spin
+    0%
+      transform: rotate(0deg) scale(1)
+    50%
+      transform: rotate(180deg) scale(.6)
+    100%
+      transform: rotate(360deg) scale(1)

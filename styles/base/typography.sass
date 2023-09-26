@@ -1,52 +1,153 @@
 %all
   box-sizing: border-box
 
+%h1
+  @include desktop
+    font-size: rem-calc(64)
+  @include laptop
+    font-size: rem-calc(55)
+  @include tablet-lg
+    font-size: rem-calc(50)
+  @include tablet-md
+    font-size: rem-calc(45)
+  @include nexus
+    font-size: rem-calc(40)
+  @include phone-land-lg
+    font-size: rem-calc(35)
+  @include phone-lg
+    font-size: rem-calc(35)
+  @include phone
+    font-size: rem-calc(30)
+  line-height: 1.25
+  color: var(--primary)
+  font-family: var(--primary-header)
+  font-size: rem-calc(60)
+
+%h2
+  @include desktop
+    font-size: rem-calc(56)
+  @include laptop
+    font-size: rem-calc(48)
+  @include tablet-lg
+    font-size: rem-calc(44)
+  @include tablet-md
+    font-size: rem-calc(40)
+  @include nexus
+    font-size: rem-calc(36)
+  @include phone-land-lg
+    font-size: rem-calc(32)
+  @include phone-lg
+    font-size: rem-calc(32)
+  @include phone
+    font-size: rem-calc(28)
+  line-height: 1.258
+  letter-spacing: 2px
+  color: var(--pink)
+  font-family: var(--secondary-header)
+  font-size: rem-calc(52)
+  font-weight: 500
+
+%h3
+  @include desktop
+    font-size: rem-calc(22)
+  @include nexus
+    font-size: rem-calc(20)
+  @include phone-land-lg
+    font-size: rem-calc(20)
+  @include phone-lg
+    font-size: rem-calc(20)
+  @include phone
+    font-size: rem-calc(18)
+  line-height: 1.258
+  letter-spacing: 1px
+  color: var(--primary)
+  font-family: var(--secondary-header)
+  font-size: rem-calc(22)
+  font-weight: 400
+
+%h4
+  @include desktop
+    font-size: rem-calc(25)
+  @include laptop
+    font-size: rem-calc(24)
+  @include tablet-lg
+    font-size: rem-calc(22)
+  @include tablet-md
+    font-size: rem-calc(22)
+  @include nexus
+    font-size: rem-calc(22)
+  @include phone-land-lg
+    font-size: rem-calc(24)
+  @include phone-lg
+    font-size: rem-calc(20)
+  @include phone
+    font-size: rem-calc(18)
+  line-height: 1.5
+  letter-spacing: .5px
+  color: var(--primary)
+  font-family: var(--secondary-header)
+  font-size: rem-calc(24)
+  font-weight: 400
+
 %body
   @include desktop
-    font-size: 18px
+    font-size: rem-calc(22)
+  @include tablet
+    font-size: 1rem
+  @include phone-land-lg
+    font-size: 1rem
   @include phone
-    font-size: 14px
+    font-size: rem-calc(15)
   text-rendering: optimizeLegibility
-  line-height: 1.467
-  color: $black
-  font-family: var(--font)
-  font-size: 16px
+  line-height: 1.4
+  color: var(--text)
+  font-family: var(--body)
+  font-size: 20px
+  font-weight: 500
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-%h1
-  line-height: 1.258
-  font-size: 50px
-  font-weight: 800
-
-%h2
-  line-height: 1.258
-  font-size: 40px
-  font-weight: bold
-
-%h3
-  line-height: 1.258
-  font-size: 30px
+%disclaimer
+  width: fit-content
+  letter-spacing: 1px
+  color: rgba(var(--text-rgb), 0.8)
+  font-family: var(--body)
+  font-size: rem-calc(10)
   font-weight: 500
 
-%h4
-  font-size: 25px
-  font-weight: 300
+%button
+  @include phone-land-lg
+    font-size: rem-calc(15)
+  @include nexus
+    font-size: rem-calc(14)
+  display: flex
+  position: relative
+  align-items: center
+  transition: all .2s ease
+  cursor: pointer
+  text-align: center
+  text-transform: uppercase
+  text-decoration: none
+  line-height: 1.5rem
+  letter-spacing: 2px
+  font-family: var(--secondary-header)
+  font-size: 1rem
+  font-weight: 400
 
-%h5
-  font-size: 20px
-
-%h6
-  font-size: 18px
 
 %a
-  color: $black
+  @extend %body
+  text-decoration: none
+  color: var(--primary)
 
 %no-margin
   margin: 0
 
 %wysiwyg-text
+  @extend %body
   p:not(:last-child)
     @include laptop-lg
-      margin-bottom: .75rem
-    margin-bottom: .5rem
+      margin-bottom: 1rem
+    margin-bottom: .75rem
+  strong, b
+    font-weight: 600

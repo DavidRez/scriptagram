@@ -1,12 +1,14 @@
 <template lang='pug' src='./index.pug'></template>
 
 <script>
+import { fadeIn, titleAnimation, debounce } from '~/resources/mixins'
 import BlockButton from '~/components/block/block-button'
 
 export default {
   components: {
     BlockButton
   },
+  mixins: [ fadeIn, titleAnimation, debounce ],
   props: {
     props: {
       type: Object,
@@ -14,40 +16,86 @@ export default {
     }
   },
   data: () => ({
-    slider: false
+    tileWidth: '100%',
+    maxHeight: 'fit-content'
   }),
   mounted () {
-    this.setIfSlider()
+    this.setTiles()
     window.addEventListener('resize', () => {
-      this.setIfSlider()
+      this.debounceFunc()
     })
+    if (this.$store.state.siteIsLoaded) {
+      this.handleAnimation()
+    } else {
+      this.$store.watch(
+        state => this.$store.state.siteIsLoaded,
+        (newVal) => {
+          if (newVal) {
+            this.handleAnimation()
+          }
+        }
+      )
+    }
   },
-  destroyed () {
-    window.removeEventListener('resize', this.setIfSlider)
+  beforeDestroy () {
+    window.removeEventListener('resize', this.debounceFunc)
   },
   methods: {
-    setIfSlider () {
-      let columnsAtCurrentWidth = this.props.columns
+    debounceFunc () {
+      this.debounce(this.setTiles, null, 100)
+    },
+    setTiles () {
+      if (this.$refs.container) {
+        const containerWidth = this.$refs.container.clientWidth
 
-      if (this.props.overflow === 'slider') {
-        this.slider = true
-
-        if (window.innerWidth <= 480) {
-          columnsAtCurrentWidth = 1
-        } else if (window.innerWidth <= 768) {
-          columnsAtCurrentWidth = 2
-        } else if (window.innerWidth <= 880) {
-          columnsAtCurrentWidth = this.props.columns === '2' ? 2 : 3
-        } else {
-          columnsAtCurrentWidth = +this.props.columns
+        if (window.innerWidth > 768) {
+          this.tileWidth = `${(containerWidth / this.props.columns) - (8 * this.props.columns)}px`
         }
-      } else if (window.innerWidth <= 480 && this.props.tiles.length > 3) {
-        this.slider = true
+        if (window.innerWidth <= 900 && window.innerHeight <= 480) {
+          this.tileWidth = `${(containerWidth / 2) - 32}px`
+        }
+        if (window.innerWidth <= 768) {
+          this.tileWidth = `${(containerWidth / 2) - (16 * this.props.columns)}px`
+        }
+        if (window.innerWidth <= 600) {
+          this.tileWidth = '100%'
+        }
       }
 
-      if (columnsAtCurrentWidth >= this.props.tiles.length) {
-        this.slider = false
-      }
+      this.$nextTick(() => {
+        const titles = this.$refs.titles
+        let titlesHeights = []
+        titlesHeights = titles ? titles.map((a) => {
+          return a.scrollHeight
+        }) : []
+        this.maxHeight = `${Math.max(...titlesHeights)}px`
+      })
+    },
+    handleAnimation () {
+      this.$nextTick(() => {
+        if (this.props.title) {
+          this.$_titleAnimation(this.$refs.title, '0', '24', 1, 0)
+        }
+        if (this.props.tiles) {
+          const tl = this.$gsap.timeline({
+            scrollTrigger: {
+              trigger: this.$refs.tiles,
+              toggleActions: 'play none play none',
+              start: '+48 bottom'
+            }
+          })
+          this.$refs.tiles.forEach((tile, i) => {
+            const delay = 0.1 + (0.1 * i)
+            tl.from(tile, {
+              opacity: 0,
+              y: '24',
+              delay,
+              duration: 0.75,
+              ease: 'bounce'
+            }, '<+=0.1')
+          })
+        }
+      })
     }
   }
 }

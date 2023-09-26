@@ -1,0 +1,12 @@
+.block-preview-post
+  .block-preview-post__image-container
+    BaseIcon.block-preview-post__play(v-if='compact && video' name='play-button')
+    .block-preview-post__overlay
+    BaseImage.block-preview-post__image(v-bind='image' imageBackground forceVisible)
+  .block-preview-post__title(v-if='!compact')
+    .block-preview-post__title--circle
+      BaseIcon.block-preview-post__play(v-if='video' name='play-button')
+    h3.block-preview-post__title--label(v-if='props.title') {{ props.title }}
+  .block-preview-post__excerpt(v-if='props.excerpt && !compact') {{ props.excerpt }}
+  nuxt-link.block-preview-post__button(v-if='props.path' :to='props.path') Read More
+    

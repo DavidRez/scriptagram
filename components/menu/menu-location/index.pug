@@ -1,0 +1,16 @@
+.menu-location
+  .menu-location__container
+    a.menu-location__location-link(v-if='props.phone.number'
+      :href='props.phone.href' :aria-label='`call ${props.phone.number}`'
+      @click='toggleMenu()' @keyup.enter='toggleMenu()')
+      BaseIcon(name='mobile-phone')
+      span(v-html='props.phone.number')
+    a.menu-location__location-link(v-if='props.address.label'
+      :href='props.address.href' :aria-label='props.address.aria' target='_blank'
+      @click='toggleMenu()' @keyup.enter='toggleMenu()')
+      BaseIcon(name='map-pin')
+      span(v-html='props.address.label')
+    .menu-location__location-hours(v-if='props.hours')
+      BaseIcon(name='clock')
+      .menu-location__location-hours-group
+        .menu-location__location-hour(v-for='(hour, j) in props.hours' :key='`hour-${j}`') {{ hour.day + ': ' + hour.time }}

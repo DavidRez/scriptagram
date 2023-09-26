@@ -54,3 +54,14 @@
 
   &--bottom-only-half
     @extend %component-margins--half-bottom
+
+  &--no-hero
+    @include tablet
+      margin-top: rem-calc(75)
+    @include nexus
+      margin-top: rem-calc(65)
+    @include phone-land-lg
+      margin-top: rem-calc(65)
+    @include phone
+      margin-top: rem-calc(55)
+    margin-top: rem-calc(100)

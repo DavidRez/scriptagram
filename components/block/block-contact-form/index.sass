@@ -1,0 +1,17 @@
+.block-contact-form
+  position: relative
+
+  &__container
+    @include container
+    justify-content: center
+
+  &__content
+    @extend %margin-bottom
+  
+  &__box
+    @include tablet
+      padding: 1rem
+    margin: 0 auto
+    background: var(--primary)
+    padding: 2rem
+    width: 100%

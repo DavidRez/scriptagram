@@ -1,0 +1,3 @@
+.menu-social-media(:class='{ "menu-social-media--center": center, "menu-social-media--stacked": stacked }')
+  a.menu-social-media__link(v-for='(social, k) in props.social_media', :key='`social-${k}`', :href='social.href', target='_blank'  role='link' :aria-label='`${social.account} icon opens new tab`' @click='toggleMenu()' @keyup.enter='toggleMenu()' tabindex='0')
+    BaseIcon.menu-social-media__icon(:name='social.account')

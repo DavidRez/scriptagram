@@ -20,7 +20,7 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
-      this.selectedForm = this.$store.state.forms.find(form => form.id.toString() === this.props.form[0].toString())
+      this.selectedForm = this.$store.state.forms.posts.find(form => form.id.toString() === this.props.form[0].toString())
     })
   }
 }

@@ -1,0 +1,87 @@
+.block-preview-post
+
+  &__image-container
+    @include tablet-lg
+      border-radius: rem-calc(35)
+    @include nexus
+      border-radius: rem-calc(25)
+    @include phone-land-lg
+      border-radius: rem-calc(20)
+    position: relative
+    z-index: 0
+    border-radius: rem-calc(50)
+    padding-top: 65%
+    width: 100%
+    overflow: hidden
+
+  &__play
+    @extend %absolute
+    right: 0
+    bottom: 0
+    z-index: 2
+    margin: auto
+    width: rem-calc(50)
+    height: rem-calc(50)
+
+    svg
+      width: 100%
+      height: 100%
+      path
+        fill: $white
+
+  &__overlay,
+  &__image
+    @extend %absolute
+
+  &__overlay
+    transition: all .2s ease
+    opacity: 0
+    z-index: 1
+    background: rgba(var(--accent1-rgb), 0.25)
+
+  &__image
+
+    &.base-image
+      position: absolute
+      overflow: hidden
+
+    .base-image__image
+      object-fit: cover
+
+  &__title
+    @extend %margin-bottom--sm
+    @include nexus
+      padding: .5rem
+    @include phone-land-lg
+      padding: .5rem
+    display: flex
+    position: relative
+    align-items: center
+    z-index: 2
+    margin-top: -2rem
+    border: 2px solid $white
+    border-radius: rem-calc(50)
+    background: var(--primary)
+    padding: 1rem
+    width: 100%
+
+    &--circle
+      display: inline-block
+      position: relative
+      margin-right: 1rem
+      border-radius: 50%
+      background: var(--accent1)
+      width: rem-calc(50)
+      height: rem-calc(50)
+
+    &--label
+      display: inline-block
+      flex: 2
+      color: $white
+
+  &__excerpt
+    @extend %body
+    flex: 2
+  
+  &__button
+    @extend %margin-top--md

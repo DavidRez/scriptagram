@@ -1,0 +1,38 @@
+.menu
+  position: relative
+  transition: all .35s ease-in
+  width: 100%
+  height: fit-content
+
+  &__logo
+    display: block
+    margin: 0 auto
+    width: 100%
+    max-width: rem-calc(200)
+
+    .base-icon
+      width: 100%
+
+      svg
+        width: 100%
+        height: auto
+        
+        path
+          fill: $white !important
+
+    &:focus-visible
+      @include focus
+
+  &__sections
+    display: block
+    position: relative
+    transition: all .5s ease
+    width: 100%
+    height: fit-content
+
+    a
+      &:focus-visible
+        @include focus
+
+    & > *
+      margin-top: 2rem

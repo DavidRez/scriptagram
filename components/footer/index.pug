@@ -1,3 +1,16 @@
 footer.footer
-  h2.footer__title Footer
-  //- pre {{ props }}
+  BaseIcon.footer__wave(name='footer-wave' ref='wave' :style='{ top: height }')
+  .footer__top
+    .footer__container(ref='container')
+      BaseIcon.footer__bubbles.footer__bubbles--large(name='footer-bubbles-large' ref='largeBubbles' :style='{ left: position }')
+      BaseIcon.footer__bubbles.footer__bubbles--small(name='footer-bubbles-small' ref='smallBubbles' :style='{ right: position }')
+      BaseIcon.footer__logo(name='logo')
+      FooterDesktop.footer__row(v-if='!$store.state.isTablet' :props='$store.state.global' :links='links')
+      FooterMobile.footer__row(v-if='$store.state.isTablet' :props='$store.state.global' :links='links')
+  .footer__bottom
+    .footer__container.footer__container--bottom
+      .footer__bottom--col
+        span {{ `© ${ new Date().getFullYear() } ${ $store.state.global.company_name } | ` }}
+        a.footer__bottom-link(v-html='"Online Advantage by Rooster Grin Media"', href='https://www.roostergrin.com/', target='_blank' aria-label='links to Rooster Grin site')
+        span {{ ' | ' }}
+        nuxt-link.footer__bottom-link(to='/accessibility') Click for Accessibility

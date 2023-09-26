@@ -1,0 +1,9 @@
+.block-post-pagination(v-if='pageCount > 1')
+  .block-post-pagination__container
+    nuxt-link.block-post-pagination__number(
+      v-for='(num, i) in pageCount'
+      :key='"page " + i'
+      :to='{ name: $route.name , params: { page: String(i + 1) } }'
+      :class='{ "block-post-pagination__number--active":  $route.params.page === String(i + 1) }'
+      tabindex='0')
+      span {{ i + 1 }}

@@ -10,10 +10,11 @@
       'block-content--header-color-white': props.header_color === 'white'
     }
   ]`)
-  h1.block-content__header(v-if='props.hero_header && props.header', v-html='props.header')
+  h1.block-content__header(v-if='props.hero_header && props.header', v-html='props.header'
+    :class=`{ 'block-content__header--no-margin': !props.subheader && !props.body }`)
   h2.block-content__header(
     v-if='props.header', v-html='props.hero_header && props.subheader ? props.subheader : props.header',
-    :class=`{ 'block-content__header--no-margin': props.hero_header && props.subheader && !props.body }`,
+    :class=`{ 'block-content__header--no-margin': !props.subheader && !props.body }`,
   )
   h3.block-content__subheader(
     v-if='props.subheader && !props.hero_header',

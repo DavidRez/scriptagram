@@ -1,0 +1,43 @@
+.menu-links
+  height: fit-content
+
+  &__link-container
+    width: fit-content
+
+    &:not(:last-of-type)
+      margin-bottom: 2rem
+
+    &--inline
+      display: inline-block
+      margin-right: 2rem
+      width: fit-content
+
+      &:not(:last-of-type)
+        margin-bottom: unset
+
+    &--center
+      margin-right: auto
+      margin-left: auto
+
+  &__link
+    @extend %button
+    @include hover-supported
+      color: var(--accent1)
+    display: block
+    position: relative
+    transition: all .1s ease-in
+    color: var(--primary)
+
+    &:focus-visible
+      @include focus
+
+    &--active
+      color: var(--pink)
+      
+      &.menu-links__link--light
+        color: var(--secondary)
+
+    &--light
+      @include hover-supported
+        color: var(--secondary)
+      color: $white

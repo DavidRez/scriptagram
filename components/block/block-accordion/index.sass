@@ -5,102 +5,45 @@
     @include container
     justify-content: center
 
-  &__col
-    @include col (8)
-
-    .block-accordion--2-columns &
-      @include col (6)
-
-  &__items
-    width: 100%
-
-    .block-accordion__container--line &
-      background-color: var(--bg-1)
-
-  &__title
+  &__accordion
     @include tablet
-      margin-bottom: rem-calc(24)
-    margin-bottom: rem-calc(32)
-    width: 100%
-    text-align: center
-
-  &__item-container
+      padding: 1rem 2rem
     @include nexus
-      padding: rem-calc(24) rem-calc(12)
-    position: relative
-    transition: border-color .2s ease
-    border: solid rem-calc(2) var(--bg-1)
-    background-color: var(--bg-1)
-    cursor: pointer
-    padding: rem-calc(24) rem-calc(32)
+      padding: 1rem
+    @include phone-land-lg
+      padding: .5rem 2rem
+    border-radius: rem-calc(20)
+    background: var(--primary)
+    padding: 2rem 3rem
     width: 100%
-
-    &:not(&:first-child)
-      @include tablet
-        margin-top: 2rem
-      @include phone-lg
-        margin-top: 1rem
-      margin-top: #{$gutter}
-
-    .block-accordion__container--line &
-      @include desktop
-        padding: rem-calc(24) rem-calc(72)
-      @include nexus
-        padding: rem-calc(24)
-      padding: rem-calc(24) rem-calc(54)
-
-    &:not(&:first-child)
-      .block-accordion__container--line &
-        margin-top: 0
-
-    &:first-child
-      .block-accordion__container--line &
-        @include desktop
-          padding-top: rem-calc(72)
-        @include nexus
-          padding-top: rem-calc(40)
-        padding-top: rem-calc(54)
-
-    &:last-child
-      .block-accordion__container--line &
-        @include desktop
-          padding-bottom: rem-calc(72)
-        @include nexus
-          padding-bottom: rem-calc(40)
-        padding-bottom: rem-calc(54)
-
-    &:focus-visible,
-    &:hover
-      border-color: #777
-
-      .block-accordion__container--line &
-        border-color: var(--bg-1)
-
-        //.block-accordion__line
-        //  background-color: #777
-
-        .block-accordion__item-title
-          -webkit-text-stroke-width: rem-calc(.25)
-
-        //.block-accordion__cross
-        //  span
-        //    background-color: #777
-
-    &:focus,
-    &:focus-visible,
-    &:hover
-      outline: none
 
   &__item
-    display: flex
-    position: relative
-    flex-wrap: nowrap
-    align-items: center
-    justify-content: space-between
+    display: block
+    border: none
+    background: none
+    cursor: pointer
+    padding: 1rem 0
     width: 100%
+    page-break-inside: avoid
 
-  &__item-title
+    &:focus-visible
+      @include focus
+
+    &:not(:last-of-type)
+      border-bottom: 2px solid $white
+
+  &__accordion-top
+    display: flex
+    flex-wrap: wrap
+
+  &__question
+    @extend %h3
+    flex: 2
     text-align: left
+    text-transform: uppercase
+    color: $white
+    font-family: var(--body)
+    font-weight: 500
 
   &__cross
     @include desktop
@@ -143,7 +86,7 @@
       top: 50%
       transform: translate(0, -50%)
       transition: transform .2s ease-in-out, background-color .3s ease
-      background-color: #777
+      background-color: $white
       width: 100%
       height: rem-calc(3)
 
@@ -151,134 +94,38 @@
         transform: translate(0, -50%) rotate(90deg)
         transform-origin: center
 
-      //.block-accordion__container--line &
-      //  background-color: #bdbdbd
+      .block-accordion__item:focus-visible &,
+      .block-accordion__item:hover &
+        background-color: var(--accent1)
 
-      .block-accordion__item-container:focus-visible &,
-      .block-accordion__item-container:hover &
-        background-color: $black
-
-    .block-accordion__item-container--active &
+    .block-accordion__item--active &
       span
         &:last-child
           transform: translate(0, -50%) rotate(0deg)
 
-  &__content
-    position: relative
-    transition: opacity .2s ease
-    opacity: 0
-
-    .block-accordion__item-container--active &
-      transition-delay: .2s
-      opacity: 1
-
-  &__body
-    padding-top: rem-calc(8)
-    width: 100%
-    text-align: left
-
-  &__image
-    width: 100%
-    height: 100%
-
-    &-container
-      position: relative
-      margin-top: rem-calc(12)
-      padding-bottom: 60%
-      width: 100%
-
-  &__video
-    width: 100%
-
-    .block-accordion__video-container--embedded &
-      @include desktop
-        min-height: rem-calc(340)
-      @include laptop
-        min-height: rem-calc(380)
-      @include laptop-sm
-        min-height: rem-calc(340)
-      @include tablet-md
-        min-height: rem-calc(260)
-      @include tablet
-        min-height: rem-calc(360)
-      @include phone-land-lg
-        min-height: rem-calc(240)
-      @include nexus
-        min-height: rem-calc(280)
-      @include phone-lg
-        min-height: rem-calc(240)
-      @include phone
-        min-height: rem-calc(170)
-      height: 100%
-      min-height: rem-calc(260)
-
-    &-container
-      transition: opacity .3s ease
-      opacity: 0
-
-      &--file
-        @extend %absolute
-
-      &--embedded
-        @include desktop
-          min-height: rem-calc(340)
-        @include laptop
-          min-height: rem-calc(380)
-        @include laptop-sm
-          min-height: rem-calc(340)
-        @include tablet-md
-          min-height: rem-calc(260)
-        @include tablet
-          min-height: rem-calc(360)
-        @include phone-land-lg
-          min-height: rem-calc(240)
-        @include nexus
-          min-height: rem-calc(280)
-        @include phone-lg
-          min-height: rem-calc(240)
-        @include phone
-          min-height: rem-calc(170)
-        position: relative
-        margin-top: rem-calc(12)
-        height: 100%
-        min-height: rem-calc(260)
-
-      .block-accordion__item-container--active &
-        transition-delay: .2s
-        opacity: 1
-
-      &-outer
-        position: relative
-        margin-top: rem-calc(12)
-        padding-bottom: 66.6667%
-        width: 100%
-
   &__drawer
-    transition: height .3s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
+    transition: max-height 1s cubic-bezier(.39, .575, .28, .995), padding .3s ease-in-out
     margin: 0 auto
     background: transparent
     width: 100%
-    height: 0
+    max-height: 0
     pointer-events: none
     font-weight: 300
 
-    .block-accordion__item-container--active &
+    .block-accordion__item--active &
       pointer-events: all
+      max-height: 400vh
 
-  &__line
-    transition: background-color .2s ease
-    background-color: #bdbdbd
+  &__answer
+    @extend %wysiwyg-text
+    position: relative
+    transition: opacity .2s ease
+    opacity: 0
+    padding-top: .5rem
     width: 100%
-    height: 100%
+    text-align: left
+    color: $white
 
-    &-container
-      @include desktop
-        padding: 0 rem-calc(72)
-      @include nexus
-        padding: 0 rem-calc(24)
-      position: absolute
-      bottom: 0
-      left: 0
-      padding: 0 rem-calc(54)
-      width: 100%
-      height: rem-calc(3)
+    .block-accordion__item--active &
+      transition-delay: .3s
+      opacity: 1

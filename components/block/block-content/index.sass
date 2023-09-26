@@ -1,4 +1,6 @@
 .block-content
+  display: flex
+  flex-direction: column
 
   &--center
     text-align: center
@@ -44,6 +46,7 @@
 
   &__body
     @extend %wysiwyg-text
+    @extend %margin-bottom
 
     h2
       .pages-privacy-policy &,
@@ -85,9 +88,7 @@
       justify-content: flex-end !important
 
   &__button
-    @include desktop
-      margin-top: rem-calc(32)
-    margin-top: rem-calc(24)
+    margin-top: 1rem
 
     &--inline
       .block-content__buttons--left &
@@ -103,14 +104,3 @@
     &--stacked
       display: flex
       width: auto
-
-  .block-image-content-banner-alt &
-    .block-content__header
-      @include desktop
-        margin-bottom: rem-calc(20)
-      margin-bottom: rem-calc(12)
-    .block-content__subheader
-      @extend %h4
-      @include desktop
-        margin-bottom: rem-calc(10)
-      margin-bottom: rem-calc(4)

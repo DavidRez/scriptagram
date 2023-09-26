@@ -1,0 +1,15 @@
+.menu
+  nuxt-link.menu__logo(to='/' aria-label='links to homepage' @click.native='$route.path === "/" ? [top(), toggleMenu()]  : toggleMenu()' @key.enter='$route.path === "/" ? [top(), toggleMenu()]  : toggleMenu()')
+    BaseIcon(name='logo')
+  .menu__sections
+    // ROUTES
+    MenuLinks.menu__links(:props='props' :links='links' :toggleMenu='toggleMenu' :top='top' light center)
+    // QUICK LINKS
+    MenuQuickLinks.menu__quick-links(:props='props' :toggleMenu='toggleMenu' light center)
+    // CONTACT
+    MenuContact.menu__contact(:props='props' :toggleMenu='toggleMenu' center)
+    //- GLOBAL SOCIAL MEDIA
+    MenuSocialMedia.menu__social(:props='props' center)
+  .menu__close(role='button' aria-label='close menu' @click='toggleMenu()' @keyup.enter='toggleMenu()' tabindex='0')
+    span 
+    span

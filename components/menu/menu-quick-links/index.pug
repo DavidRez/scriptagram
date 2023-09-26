@@ -1,0 +1,16 @@
+.menu-quick-links
+  .menu-quick-links__container(v-for='(link, i) in props.navigation.quick_links' :key='`${i}`' :class='{ "menu-quick-links__container--center": center }' role='menu')
+    nuxt-link.menu-quick-links__link(v-if='link.type === "nuxt-link"'
+      :class='{ "menu-quick-links__link--light": light, "menu-quick-links__link--active": $route.path.includes(link.path) && link.path !== "/", "menu-quick-links__link--active": $route.path === link.path, "menu-quick-links__link--active": $route.path === link.path || (link.path.includes("blog") && $route.path.includes(link.path)) }'
+      :to='{ path: link.path, hash: link.hash }'
+      v-html='link.label'
+      @click.native='toggleMenu()'
+      @keyup.enter='toggleMenu()'
+      role='menuitem')
+    a.menu-quick-links__link(v-else-if='link.type === "ext-link"'
+      :href='link.href'
+      v-html='link.label'
+      target='_blank'
+      @click='toggleMenu()'
+      @keyup.enter='toggleMenu()'
+      role='menuitem')

@@ -79,7 +79,7 @@
     gap: #{$gutter}
 
   &__button
-    @include button-secondary(#{var(--primary)}, $white)
+    @include button-secondary
 
     &--active
       transition: background-color .3s ease
@@ -110,13 +110,13 @@
     flex-direction: column
 
   &__list-link
-    @include button-underline(#{var(--gray-1)}, #{var(--primary)})
+    @include button-secondary
     margin-top: #{$gutter / 2}
     min-width: rem-calc(42)
     max-width: max-content
 
     &--button
-      @include button-secondary(#{var(--primary)}, $white)
+      @include button-secondary
 
       &::after
         display: none

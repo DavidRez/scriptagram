@@ -2,11 +2,18 @@
   width: 100%
 
   &__form
+    @include tablet
+      padding: 2rem
+    @include nexus
+      padding: 2rem 1rem
     display: flex
     position: relative
     flex-wrap: wrap
     align-items: center
     justify-content: space-between
+    border-radius: rem-calc(20)
+    background: var(--primary)
+    padding: 3rem
 
   &__container
     display: flex
@@ -36,8 +43,9 @@
         flex-wrap: wrap
         gap: 0
       display: flex
+      flex-direction: column
       border: none
-      gap: 2rem
+      gap: 1rem
       padding: 0
 
     &--checkbox
@@ -58,6 +66,7 @@
     padding-left: 1rem
     transform-origin: left top
     pointer-events: none
+    color: $white
 
     &--textarea
       top: 20%
@@ -73,8 +82,9 @@
       padding-bottom: .5rem
 
   &__input
-    border-bottom: rem-calc(2) solid var(--primary)
+    border-bottom: rem-calc(2) solid $white
     border-radius: 0
+    background: transparent
     padding: .75rem
     width: 100%
     -webkit-appearance: none
@@ -82,7 +92,7 @@
 
     &:focus
       outline: transparent
-      border: rem-calc(2) solid blue
+      border: rem-calc(2) solid var(--accent2)
     &:active
       outline: transparent
 
@@ -102,11 +112,11 @@
     &--select
       position: relative
       border: none
-      border-bottom: rem-calc(2) solid var(--primary)
+      border-bottom: rem-calc(2) solid $white
       cursor: pointer
 
     &--textarea
-      border: rem-calc(2) solid var(--primary)
+      border: rem-calc(2) solid $white
 
   .caret
     z-index: 99
@@ -121,7 +131,7 @@
     &:after
       display: inline-block
       vertical-align: bottom
-      color: var(--primary)
+      color: $white
       content: '▾'
 
   &__error-message
@@ -152,6 +162,7 @@
     &-title
       margin-bottom: .25rem
       text-align: left
+      color: $white
 
       &-container
         flex-basis: 0
@@ -180,22 +191,22 @@
 
       &:hover ~ .form-flexible__radio-overlay,
       &:focus-visible ~ .form-flexible__radio-overlay
-        border: rem-calc(3) solid var(--primary)
+        border: rem-calc(3) solid $white
 
         &:after
           transition: opacity .3s ease
           opacity: 1
 
       &:checked ~ .form-flexible__radio-overlay
-        background: var(--primary)
+        background: $white
 
       &:checked.form-flexible__radio-input:hover ~ .form-flexible__radio-overlay,
       &:checked.form-flexible__radio-input:focus-visible ~ .form-flexible__radio-overlay
-        border-color: var(--bg-2)
+        border-color: $white
 
     &-overlay
       //transition: border .2s ease
-      border: rem-calc(2) solid var(--primary)
+      border: rem-calc(2) solid $white
       background: none
 
       &:after
@@ -210,6 +221,7 @@
     &-label
       padding-left: 2.25rem
       text-transform: capitalize
+      color: $white
 
   &__checkbox
     display: flex
@@ -253,7 +265,7 @@
         background: var(--primary)
 
         .form-flexible__checkbox-label
-          color: $white
+          color: var(--primary)
 
       &:checked.form-flexible__checkbox-input:hover ~ .form-flexible__checkbox-overlay,
       &:checked.form-flexible__checkbox-input:focus-visible ~ .form-flexible__checkbox-overlay
@@ -274,23 +286,34 @@
       text-transform: capitalize
 
   &__submit-button
-    @include focus
+    @extend %button
+    @include hover-supported
+      .form-flexible__submit-label
+        color: var(--primary)
+      &::after
+        left: 0
+        background: $white
     position: relative
-    transition: background .2s ease, color .2s ease
-    border: solid rem-calc(2) var(--primary)
-    border-radius: rem-calc(2)
-    background: var(--primary)
-    cursor: pointer
-    padding: 0
+    z-index: 0
+    margin: 0 auto
+    border: 2px solid $white
+    border-radius: rem-calc(25)
+    background: transparent
+    padding: rem-calc(12) rem-calc(20) rem-calc(10)
     overflow: hidden
     color: $white
 
+    &::after
+      @extend %absolute
+      left: -100%
+      transition: all .3s ease
+      z-index: 1
+      border-radius: rem-calc(25)
+      background: transparent
+      content: ''
+
     &:active
       outline: transparent
-
-    &:hover
-      background: transparent
-      color: var(--primary)
 
     &--sending
       background: $gray
@@ -309,8 +332,7 @@
     display: block
     position: relative
     transition: transform .25s ease .25s
-    z-index: 9
-    padding: .5rem 1.75rem
+    z-index: 2
 
     &--hidden
       transform: scale(0)

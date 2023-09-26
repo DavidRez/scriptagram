@@ -1,0 +1,8 @@
+section.block-count-up-cards(ref='container')
+  .block-count-up-cards__container
+    .block-count-up-cards__card(v-for='(card, i) in props.cards' :key='`cards-${i}`' ref='cards')
+      h2.block-count-up-cards__card-label
+        span(v-html='0' ref='numbers' :data-target='card.number')
+        span(v-if='card.inline_label') {{ card.inline_label }}
+      h2.block-count-up-cards__card-label(v-if='card.label' v-html='card.label')
+      BlockButton.block-count-up-cards__card-button(v-if='card.button' :props='card.button')

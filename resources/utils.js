@@ -39,26 +39,48 @@ export const getAllPages = async () => {
 }
 
 // gets data for all custom posts of a specific type
-export const getCustomPosts = async (customPostType) => {
+export const getCustomPosts = async (customPostType, total = 100) => {
   try {
     const response = await axios.get(
-      `${api}/wp/v2/${customPostType}?per_page=100`
+      `${api}/wp/v2/${customPostType}?per_page=${total}`
     )
     const dataPages = response.headers['x-wp-totalpages']
-    let dataArray = response.data
-    for (let i = 2; i <= dataPages; i++) {
-      const nextPage = await axios.get(
-        `${api}/wp/v2/${customPostType}?per_page=100&page=${i}`
-      )
-      dataArray = [...dataArray, ...nextPage.data]
-    }
-    return dataArray.map(item => ({
+    let dataArray = response.data.map(item => ({
       id: item.id,
       title: item.title,
-      path: `/${customPostType}/${item.slug}`,
+      path: `/${customPostType === 'posts' ? 'blog' : customPostType}/${item.slug}`,
       slug: item.slug,
-      ...item.acf
+      category: item.categories ? item.categories[0] : null,
+      post: item.acf
     }))
+    const currentPosts = { '1': dataArray }
+    for (let i = 2; i <= dataPages; i++) {
+      const nextPage = await axios.get(
+        `${api}/wp/v2/${customPostType}?per_page=${total}&page=${i}`
+      )
+      const next = nextPage.data.map(item => ({
+        id: item.id,
+        title: item.title.rendered,
+        path: `/${customPostType === 'posts' ? 'blog' : customPostType}/${item.slug}`,
+        slug: item.slug,
+        category: item.categories ? item.categories[0] : null,
+        post: item.acf
+      }))
+      dataArray = [...dataArray, ...next]
+      currentPosts[`${i}`] = next
+    }
+    const sortedDataArr = dataArray.sort((a, b) => {
+      const aDate = new Date(a.date)
+      const bDate = new Date(b.date)
+      return bDate - aDate
+    })
+
+    const data = {
+      posts: sortedDataArr,
+      postsPerPage: currentPosts,
+      pageCount: dataPages
+    }
+    return data
   } catch (e) {
     console.error(`ERROR getting ${customPostType} posts: ${e}`)
   }

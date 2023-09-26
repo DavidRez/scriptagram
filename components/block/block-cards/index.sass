@@ -1,0 +1,60 @@
+.block-cards
+
+  &__container
+    @include container
+    justify-content: center
+
+  &__title
+    @extend %title
+
+  &__cards
+    @include tablet
+      justify-content: space-evenly
+    @include phone-land-lg
+      justify-content: space-evenly
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    width: 100%
+
+  &__card
+    @include col(5.9)
+    @include tablet
+      padding: 2rem 1rem
+    @include nexus
+      padding: 2rem 1rem
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    border-radius: rem-calc(25)
+    box-shadow: 0 0 10px rgba($black, 0.1)
+    background: $white
+    padding: 2rem
+
+    &:nth-child(-n+2)
+      @include tablet
+        margin-bottom: 2rem
+      @include phone-land-lg
+        margin-bottom: 2rem
+      margin-bottom: 1rem
+
+    &:not(:last-of-type)
+      @include nexus
+        margin-bottom: 2rem
+
+  &__card-title
+    @extend %margin-bottom--sm
+    display: flex
+    align-items: center
+
+  &__card-icon
+    display: inline-block
+    margin-right: .5rem
+    height: rem-calc(50)
+
+    svg
+      width: auto
+      height: 100%
+
+  &__card-label
+    display: inline-block

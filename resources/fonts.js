@@ -3,6 +3,6 @@
 
 export default {
   google: {
-    families: [ 'Playfair+Display:400,700', 'Open+Sans:300,400,500,700&display=swap' ]
+    families: [ 'Righteous:400', 'Red+Hat+Display:700,800', 'Montserrat:400,500,700&display=swap' ]
   }
 }

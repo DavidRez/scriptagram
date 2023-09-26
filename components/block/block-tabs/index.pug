@@ -1,0 +1,43 @@
+section.block-tabs(ref='container')
+  .block-tabs__container(:class="{ 'block-tabs__container--reverse': props.reverse_layout }")
+    .block-tabs__col
+      .block-tabs__image-container(ref='image')
+        BaseImage.block-tabs__image(
+          v-if='props.image_options === "single"',
+          v-bind='props.image'
+          imageBackground,
+          forceVisible
+        )
+        BaseImage.block-tabs__image.block-tabs__image--dynamic(v-if='props.image_options === "dynamic"'
+          v-for='(tab, h) in props.tabs',
+          :key='`image-${h}`',
+          v-bind='tab.image.image',
+          :aria-hidden='activeTab !== h',
+          :aria-label='`image for tab ${h + 1} of ${props.tabs.length}`',
+          :class="{ 'block-tabs__image--dynamic--active': h === activeTab }",
+          imageBackground,
+          forceVisible,
+          role='img'
+        )
+      .block-tabs__tabs(ref='tabs')
+        button.block-tabs__tab(
+          v-for='(tab, i) in props.tabs',
+          :key='`tab-${i}`',
+          :aria-label='`tab ${i + 1} of ${props.tabs.length}`',
+          :class="{ 'block-tabs__tab--active': activeTab === i }",
+          @click='changeTab(i)'
+          @keyup.enter='changeTab(i)',
+          role='button')
+          span {{ `${i+1}` }}
+    .block-tabs__col(ref='col2')
+      h2.block-tabs__title(v-html='props.title', ref='title')
+      .block-tabs__tab-panels(:style='{ height: height }')
+        .block-tabs__tab-panel(
+          v-for='(panel, j) in props.tabs',
+          :key='`panel-${j}`',
+          :aria-hidden='activeTab !== j',
+          :aria-label='`tab content ${j + 1} (${panel.title}) of ${props.tabs.length}`',
+          :class="{ 'block-tabs__tab-panel--active': activeTab === j }",
+          ref='tabContent'
+        )
+          BlockContent.block-tabs__tab-content(:props='panel.content' ref='content')

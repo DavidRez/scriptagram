@@ -1,3 +1,109 @@
 .page-sections
   &__section
     position: relative
+
+  &__circle
+    display: flex
+    position: absolute
+    align-items: center
+    justify-content: center
+    transition: all .1s ease
+    z-index: -1
+    transform-origin: right center
+
+    svg
+      width: 100%
+      height: auto
+
+    &--left
+
+      &.page-sections__circle--small
+        @include nexus
+          left: -5%
+        left: 0%
+
+      &.page-sections__circle--medium
+        @include nexus
+          left: -15%
+        left: -5%
+
+      &.page-sections__circle--large
+        @include laptop
+          left: -30%
+        @include tablet-lg
+          left: -40%
+        @include nexus
+          left: -60%
+        @include phone-lg
+          left: -80%
+        @include phone-land-lg
+          left: -45%
+        left: -40%
+
+    &--right
+
+      &.page-sections__circle--small
+        @include nexus
+          right: -5%
+        right: 0%
+
+      &.page-sections__circle--medium
+        @include nexus
+          right: -15%
+        right: -5%
+
+      &.page-sections__circle--large
+        @include laptop
+          right: -30%
+        @include tablet-lg
+          right: -40%
+        @include nexus
+          right: -60%
+        @include phone-lg
+          right: -80%
+        @include phone-land-lg
+          right: -45%
+        right: -40%
+
+    &--top
+      @include tablet
+        top: -5%
+      @include nexus
+        top: -2.5%
+      top: -15%
+
+    &--middle
+      top: 0
+      bottom: 0
+      margin:  auto
+
+    &--bottom
+      @include tablet
+        bottom: -5%
+      @include nexus
+        bottom: -2.5%
+      bottom: -15%
+
+      &.page-sections__circle--large
+        bottom: -50%
+
+    &--small
+      @include laptop
+        width: rem-calc(75)
+      @include tablet
+        width: rem-calc(65)
+      width: rem-calc(100)
+
+    &--medium
+      @include laptop
+        width: rem-calc(200)
+      @include tablet
+        width: rem-calc(100)
+      width: rem-calc(300)
+
+    &--large
+      @include laptop
+        width: rem-calc(500)
+      @include tablet
+        width: rem-calc(350)
+      width: rem-calc(800)

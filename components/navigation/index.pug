@@ -1,2 +1,33 @@
-header.navigation
-  nuxt-link.navigation__links(v-for='(link, i) in links', :key='`link-${i}`', :to='link.path' v-html='link.name')
+.navigation(v-if='$store.state.global' ref='container' :class='{ "navigation--scrolled": isScrolled }')
+  NavigationTopBar(:props='$store.state.global' :isScrolled='isScrolled')
+  .navigation__container
+    nuxt-link.navigation__logo(to='/' aria-label='links to homepage' v-on:click.native='$route.path === "/" ? top()  : null' @key.enter='$route.path === "/" ? top()  : null')
+      BaseIcon(name='logo')
+    .navigation__right
+      // ROUTES
+      MenuLinks.navigation__links(v-if='$store.state.isDesktop' :props='$store.state.global' :links='links' inline)
+      // CTA
+      BlockButton.navigation__cta(v-if='$store.state.global.navigation.cta_button' :props='$store.state.global.navigation.cta_button' :class='{ "navigation__cta--hide": $store.state.isTablet }')
+      // HAMBURGER
+      .navigation__hamburger(v-if='!$store.state.isDesktop' @click='toggleMenu()' @keyup.enter='toggleMenu()'
+        :aria-label='isOpen ? "close menu" : "open menu"' :class='{ "navigation__hamburger--active": isOpen }'
+        role='button' tabindex='0')
+          span
+          span
+          span
+  // OVERLAY AND DRAWER
+  transition(name='fade')
+    .navigation__overlay(v-if='isOpen' @click='toggleMenu()' aria-label='close overlay and menu')
+  transition(name='drawer-slide')
+    // MENU
+    .navigation__drawer(v-if='isOpen'
+      :aria-hidden='!isOpen ? "true" : "false"',
+      aria-modal='true'
+      tabindex='-1')
+      //- .navigation__drawer-close(:class='{ "navigation__drawer-close--show": isOpen }' @click='toggleMenu()' @keyup.enter='toggleMenu()' role='button' aria-label='close menu' tabindex='0')
+      //-   span.navigation__drawer-close--bar
+      //-   span.navigation__drawer-close--bar
+      Menu(:props='$store.state.global' :links='links' :toggleMenu='toggleMenu' :top='top')
+      .navigation__close(role='button' aria-label='close menu' @click='toggleMenu()' @keyup.enter='toggleMenu()' tabindex='0')
+        span 
+        span

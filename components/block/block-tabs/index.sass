@@ -1,0 +1,130 @@
+.block-tabs
+  position: relative
+
+  &__container
+    @include container
+    @include tablet
+      padding-top: .5rem
+      padding-bottom: .5rem
+    @include nexus
+      padding-top: 1rem
+    @include phone-land-lg
+      padding-top: 1rem
+      padding-bottom: 1rem
+    justify-content: space-between
+    padding-top: .5rem
+    padding-bottom: .5rem
+
+    &--reverse
+      flex-direction: row-reverse
+
+  &__col
+    &:first-of-type
+      @include col (4)
+      @include phone-land-lg
+        width: 30%
+    &:last-of-type
+      @include col (8)
+      @include phone-land-lg
+        width: 65%
+      display: flex
+      flex-direction: column
+      justify-content: flex-start
+
+  &__image-container
+    @extend %margin-bottom
+    @include tablet
+      margin-right: auto
+      margin-left: auto
+      padding-top: 75%
+      width: 75%
+    display: flex
+    position: relative
+    align-items: flex-start
+    justify-content: center
+    padding-top: 100%
+    width: 100%
+    overflow: hidden
+
+  &__image
+    @extend %absolute
+
+    &.base-image
+      position: absolute
+
+    &--dynamic
+      @extend %absolute
+      transition: opacity .3s ease-in
+      opacity: 0
+
+      &--active
+        opacity: 1
+
+  &__tabs
+    @extend %margin-bottom--sm
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+  &__tab
+    @extend %margin-bottom--sm
+    @include hover-supported
+      border: 2px solid var(--primary)
+      background: var(--primary)
+      span
+        color: $white
+    @include nexus
+      margin-bottom: 1rem
+    display: flex
+    position: relative
+    align-items: center
+    justify-content: center
+    transition: all .2s ease
+    margin: 0 .5rem
+    border: 2px solid var(--secondary)
+    border-radius: 50%
+    background: var(--secondary)
+    cursor: pointer
+    width: 2.25rem
+    height: 2.25rem
+
+    &--active
+      pointer-events: none
+      border: 2px solid var(--primary)
+      background: transparent
+
+    &:focus-visible
+      @include focus
+
+    span
+      transition: all .2s ease
+      line-height: 1
+      color: var(--primary)
+      font-size: 1rem
+      font-weight: 600
+
+  &__title
+    @extend %margin-bottom--sm
+
+  &__tab-panels
+    position: relative
+    transition: all .3s ease
+
+  &__tab-panel
+    @extend %absolute
+    transition: opacity .3s ease, visible .3s ease
+    visibility: hidden
+    opacity: 0
+    z-index: -1
+
+    &--active
+      visibility: visible
+      opacity: 1
+      z-index: 1
+
+    &.block-content
+      ul
+        margin: 0
+  
+  &__tab-content
+    width: 100%

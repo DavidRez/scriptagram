@@ -1,0 +1,18 @@
+section.block-testimonials
+  .block-testimonials__container
+    h2.block-testimonials__title(v-if='props.title', v-html='props.title' ref='title')
+    .block-testimonials__col(v-if='testimonials' ref='col')
+      .block-testimonials__slider(:class='{ "block-testimonials__slider--centered": testimonials.length < 3 }' ref='slider')
+        .block-testimonials__slide(
+          v-for='(slide, i) in testimonials',
+          :key='`testimonial-${i}`',
+          :style='{ width: width }'
+          ref='slides'
+        )
+          BaseImage.block-testimonials__image(v-if='slide.image' v-bind='slide.image')
+          .block-testimonials__content(tabindex='0')
+            .block-testimonials__content-from(v-if='slide.from' v-html='slide.from')
+            .block-testimonials__content-body(v-if='slide.testimonial' v-html='slide.testimonial')
+            .block-testimonials__content-name
+              span.block-testimonials__content-label.block-testimonials__content-label--primary(v-if='slide.name' v-html='slide.name')
+              span.block-testimonials__content-label.block-testimonials__content-label--secondary(v-if='slide.title' v-html='" " + slide.title')

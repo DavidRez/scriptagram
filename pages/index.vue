@@ -11,8 +11,7 @@ export default {
   },
   async asyncData () {
     const props = await setData('home')
-    const global = await setData('global', 'globalData')
-    return { props, global }
+    return { props }
   }
 }
 </script>

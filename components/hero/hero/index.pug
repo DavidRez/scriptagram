@@ -1,5 +1,10 @@
-section.hero
-  BaseImage.hero__image(v-bind='Object.assign({}, props.image, { imageBackground: true })')
-  .hero__container
-    .hero__col
-      BlockContent(:props='props.content')
+.hero(:style='{ opacity: compOpacity, marginTop: marginTop }')
+  BaseIcon.hero__circles(name='yellow-green-aqua')
+  BaseIcon.hero__wave(name='hero-wave')
+  picture.hero__picture(v-if='props.media_type === "image"' ref='image')
+    source(:srcset='imgWebp' type='image/webp')
+    img.hero__image(:src='imgSrc' :alt='props.desktop_image.alt' aria-hidden='true' :style='{ objectPosition: imgPosition }')
+  video.hero__video(v-if='props.media_type === "video"' :src='props.video.src' :poster='props.video.poster.src'  :alt='props.video.alt' autoplay muted defaultMuted loop playsinline controls=false ref='video')
+  .hero__container(v-if='props.add_floating_image')
+    .hero__column
+      BaseImage.hero__floating-image(v-bind='props.image' ref='floating')

@@ -1,0 +1,18 @@
+section.block-events
+  .block-events__container(ref='container')
+    h2.block-events__title(v-if='props.title' v-html='props.title' ref='title')
+    .block-events__tiles
+      BlockPreviewPost.block-events__tile(
+        v-for='(tile, i) in events',
+        :key='`tile-${i}`',
+        :style='{ width: tileWidth }'
+        :props='tile.post'
+        :image='tile.post.image.image'
+        ref='tiles'
+      )
+    BlockButton.block-events__button(
+      v-if='props.button.label && $store.state.events.posts.length > 3'
+      :props='props.button'
+      ref='button'
+    )
+    

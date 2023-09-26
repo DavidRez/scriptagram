@@ -42,3 +42,5 @@
       :class=`{ 'button-icon-stroke': props.icon === 'pencil' }`
     )
     span(v-html='props.label')
+
+  .block-button__disclaimer(v-if='props.disclaimer') {{ props.disclaimer }}

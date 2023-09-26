@@ -1,0 +1,8 @@
+.menu-links(role='menu')
+  .menu-links__link-container(v-for='(link, i) in links' :key='`link-${i}`' :class='{ "menu-links__link-container--inline": inline, "menu-links__link-container--center": center }' role='menuitem')
+    nuxt-link.menu-links__link(
+      :class='{ "menu-links__link--light": light, "menu-links__link--active": $route.path.includes(link.path) && link.path !== "/", "menu-links__link--active": $route.path === link.path, "menu-links__link--active": $route.path === link.path || (link.path.includes("blog") && $route.path.includes(link.path)), "menu-links__link--active": $route.path === link.path || (link.path.includes("events") && $route.path.includes(link.path)) }'
+      :to='{ path: link.path, hash: link.hash }'
+      v-html='link.name'
+      @click.native='$route.path === link.path ? [top(), toggleMenu()]  : toggleMenu()'
+      @keyup.enter='$route.path === link.path ? [top(), toggleMenu()]  : toggleMenu()')

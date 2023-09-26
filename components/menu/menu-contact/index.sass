@@ -1,0 +1,65 @@
+.menu-contact
+  display: flex
+  flex-direction: column
+
+  &--inline
+    flex-direction: row
+
+  &--center
+    align-items: center
+    width: 100%
+
+  &__link
+    @include hover-supported
+      .menu-contact__icon
+        transform: scale(1.1)
+      path
+        fill: var(--secondary)
+      span
+        color: var(--secondary)
+    @include nexus
+      height: rem-calc(42)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: all .25s ease-in
+    cursor: pointer
+    padding: .1rem
+    width: fit-content
+    height: rem-calc(30)
+    
+    &:focus-visible
+      @include focus
+
+    &:not(:last-of-type)
+      margin-bottom: 2rem
+
+      .navigation-top-bar &
+        margin-bottom: 0
+
+    .navigation-top-bar &
+      @include nexus
+        margin-right: .5rem
+      margin-right: 1rem
+
+  &__icon
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100%
+
+    svg
+      @include nexus
+        height: 70%
+      height: 100%
+
+      path
+        transition: all .2s ease
+        fill: $white
+
+  span
+    @extend %button
+    transition: all .2s ease
+    margin-left: 1rem
+    text-align: left
+    color: $white

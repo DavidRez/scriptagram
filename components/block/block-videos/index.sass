@@ -1,0 +1,153 @@
+.block-videos
+  &__container
+    @include container
+    justify-content: center
+
+  &__titles
+    @extend %title
+    
+  &__title,
+  &__subtitle
+    width: 100%
+    text-align: center
+
+  &__col
+    @include col (12)
+    position: relative
+    transition: all .2s ease
+    overflow-x: auto
+    overflow-y: hidden
+
+    &::-webkit-scrollbar
+      cursor: pointer
+      width: rem-calc(5)
+      height: rem-calc(10)
+
+    &::-webkit-scrollbar-track
+      border-radius: 5px
+      background-color: var(--accent1)
+
+    &::-webkit-scrollbar-thumb
+      border-radius: 5px
+      background: var(--primary)
+      min-height: 50px
+
+  &__slider
+    display: flex
+    scroll-snap-type: x mandatory
+    width: fit-content
+
+  &__slider--centered
+    justify-content: center
+    width: 100%
+
+  &__slide
+    @include hover-supported
+      .block-videos__slide-overlay
+        opacity: 1
+    display: inline-flex
+    flex-direction: column
+    border-radius: rem-calc(25)
+    scroll-snap-align: start
+    cursor: pointer
+    padding-bottom: 2rem
+
+    &:not(:last-of-type)
+      margin-right: 2rem
+  
+  &__slide-image-container
+    @include nexus
+      border-radius: rem-calc(20)
+    @include phone-land-lg
+      border-radius: rem-calc(20)
+    position: relative
+    z-index: 0
+    border-radius: rem-calc(50)
+    padding-top: 65%
+    width: 100%
+    overflow: hidden
+
+  &__slide-play
+    @extend %absolute
+    right: 0
+    bottom: 0
+    z-index: 2
+    margin: auto
+    width: rem-calc(50)
+    height: rem-calc(50)
+
+    svg
+      width: 100%
+      height: 100%
+      path
+        fill: $white
+
+  &__slide-overlay,
+  &__slide-image
+    @extend %absolute
+
+  &__slide-overlay
+    transition: all .2s ease
+    opacity: 0
+    z-index: 1
+    background: rgba(var(--accent1-rgb), 0.25)
+
+  &__slide-image
+
+    &.base-image
+      position: absolute
+      overflow: hidden
+
+    .base-image__image
+      object-fit: cover
+
+  &__slide-title
+    @extend %margin-bottom--sm
+    @include nexus
+      padding: .5rem
+    @include phone-land-lg
+      padding: .5rem
+    display: flex
+    align-items: center
+    z-index: 2
+    margin-top: -2rem
+    border: 2px solid $white
+    border-radius: rem-calc(50)
+    background: var(--primary)
+    padding: 1rem
+    width: 100%
+
+    &--circle
+      display: inline-block
+      position: relative
+      margin-right: 1rem
+      border-radius: 50%
+      background: var(--accent1)
+      width: rem-calc(50)
+      height: rem-calc(50)
+
+    &--label
+      display: inline-block
+      flex: 2
+      color: $white
+
+  &__slide-body
+    @extend %body
+    flex: 2
+  
+  &__button
+    @extend %margin-top--md
+
+  &__video
+    @include tablet-lg
+      width: 100%
+      height: 40vw
+    @include phone-land-lg
+      width: 100vh
+      height: 60vh
+    display: block
+    margin: 0 auto
+    width: rem-calc(700)
+    height: rem-calc(400)
+
+        

@@ -1,0 +1,64 @@
+.menu-social-media
+  display: flex
+  width: fit-content
+
+  &--center
+    justify-content: center
+    width: 100%
+
+  &--stacked
+    flex-direction: column
+
+    & > *
+      &:not(:last-of-type)
+        margin-bottom: 1rem
+
+  &__link
+    @include nexus
+      width: rem-calc(42)
+      height: rem-calc(42)
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    transition: all .25s ease-in
+    margin-bottom: .5rem
+    cursor: pointer
+    padding: .1rem
+    width: rem-calc(30)
+    height: rem-calc(30)
+    
+    &:focus-visible
+      @include focus
+
+    .navigation-top-bar &
+      margin-bottom: 0
+
+    &:not(:last-of-type)
+      @include nexus
+        margin-right: 1rem
+      margin-right: 2rem
+
+      .navigation-top-bar &
+        @include nexus
+          margin-right: .5rem
+        margin-right: 1rem
+
+  &__icon
+    @include hover-supported
+      transform: scale(1.1)
+      path
+        fill: var(--secondary)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: all .2s ease
+    height: 100%
+
+    svg
+      @include nexus
+        height: 70%
+      height: 100%
+
+      path
+        transition: all .2s ease
+        fill: $white

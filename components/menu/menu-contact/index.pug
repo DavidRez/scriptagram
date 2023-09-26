@@ -1,0 +1,9 @@
+.menu-contact(:class='{ "menu-contact--compact": compact, "menu-contact--inline": inline, "menu-contact--center": center }')
+  a.menu-contact__link(v-if='props.top_bar.contact_info.includes("address")'
+    :href='props.locations[0].address.href' :aria-label='props.locations[0].address.aria' target='_blank')
+    BaseIcon.menu-contact__icon(name='pin')
+    span(v-if='!compact' v-html='props.locations[0].address.label')
+  a.menu-contact__link(v-if='props.top_bar.contact_info.includes("phone")'
+    :href='props.top_bar.phone.type === "phone-manual" ? props.top_bar.phone.href : props.phone.href' :aria-label='props.top_bar.phone.type === "phone-manual" ? `call ${props.top_bar.phone.number}` : `call ${props.phone.number}`')
+    BaseIcon.menu-contact__icon(name='phone')
+    span(v-if='!compact' v-html='props.top_bar.phone.type === "phone-manual" ? props.top_bar.phone.number : props.phone.number')

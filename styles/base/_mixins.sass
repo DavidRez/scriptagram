@@ -7,7 +7,7 @@
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
     @content
 
-@mixin focus ($offset: rem-calc(3), $width: rem-calc(2), $style: dashed, $color: blue)
+@mixin focus ($offset: rem-calc(3), $width: rem-calc(2), $style: dashed, $color: var(--accent2))
   &:focus-visible
     outline-offset: $offset
     outline-width: $width

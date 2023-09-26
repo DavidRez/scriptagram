@@ -1,0 +1,80 @@
+.menu-location
+
+  &__container
+    text-align: left
+    text-transform: uppercase
+    text-decoration: none
+    letter-spacing: rem-calc(.5)
+    color: var(--primary)
+    font-family: var(--font-button)
+    font-size: rem-calc(20)
+
+    & > *:not(:last-child)
+      margin-bottom: rem-calc(36)
+
+  &__location-link
+    display: flex
+    align-items: center
+    cursor: pointer
+    height: 1.5rem
+    text-decoration: none
+
+    @include hover-supported
+      .base-icon
+        svg
+          path
+            stroke: var(--accent) !important
+      span
+        color: var(--accent)
+
+    &:focus-visible
+      @include focus
+
+    .base-icon
+      display: inline-block
+      margin-right: 1.25rem
+      height: 100%
+
+      svg
+        width: auto
+        height: 100%
+        path
+          transition: all .2s ease
+          stroke: var(--primary) !important
+          stroke-width: 2px !important
+
+    span
+      transition: all .2s ease
+      line-height: 1.15
+      letter-spacing: .5px
+      color: var(--primary)
+    
+  &__location-hours
+    display: flex
+    align-items: flex-start
+
+    .base-icon
+      display: inline-block
+      margin-right: 1.25rem
+      height: 1.5rem
+
+      svg
+        width: auto
+        height: 100%
+        line,
+        circle
+          stroke: var(--primary) !important
+          stroke-width: 2px !important
+
+  &__location-hours-group
+    display: flex
+    flex-direction: column
+    color: var(--primary)
+
+  &__location-hour
+    display: block
+
+  &__location-social
+    padding-top: 1rem
+    width: fit-content
+      

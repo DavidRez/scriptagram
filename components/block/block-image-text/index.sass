@@ -1,0 +1,74 @@
+.block-image-text
+  position: relative
+
+  &__container
+    @include container
+    @include tablet
+      flex-wrap: wrap
+      gap: #{$gutter}
+      padding-top: .5rem
+      padding-bottom: .5rem
+    justify-content: space-between
+    // padding: .75rem .5rem
+    padding-top: .5rem
+    padding-bottom: .5rem
+    width: 100%
+
+    &--reverse
+      @include tablet
+        flex-wrap: wrap
+      flex-direction: row-reverse
+
+  &__col
+    @include phone-land-lg
+      justify-content: flex-start
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    &--media
+      @include col (5)
+      @include phone-land-lg
+        width: 40%
+      display: flex
+      position: relative
+      align-items: center
+      overflow: hidden
+
+    &--content
+      @include col (7)
+      @include phone-land-lg
+        width: 55%
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+  &__image-container,
+  &__video-container
+    @include nexus
+      border-radius: rem-calc(20)
+    @include phone-land-lg
+      border-radius: rem-calc(20)
+    position: relative
+    border-radius: rem-calc(50)
+    padding-top: 83%
+    width: 100%
+    overflow: hidden
+
+  &__image
+    @extend %absolute
+
+    &.base-image
+      position: absolute
+      overflow: hidden
+
+    .base-image__image
+      object-fit: cover
+
+  &__video-container
+    padding-top: 65%
+  
+  &__video,
+  &__iframe
+    @extend %absolute
+    object-fit: cover

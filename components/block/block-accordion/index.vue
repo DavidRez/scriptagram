@@ -1,10 +1,14 @@
 <template lang="pug" src="./index.pug"></template>
 
 <script>
-import { fadeIn } from '~/resources/mixins'
+import { fadeIn, throttle } from '~/resources/mixins'
+import BlockContent from '~/components/block/block-content'
 
 export default {
-  mixins: [ fadeIn ],
+  components: {
+    BlockContent
+  },
+  mixins: [fadeIn, throttle],
   props: {
     props: {
       type: Object,
@@ -12,67 +16,60 @@ export default {
     }
   },
   data: () => ({
-    accordionBodyHeight: null,
-    columns: 1,
-    expanded: null
+    activeItem: null
   }),
   mounted () {
-    this.setColumns()
-    this.$nextTick(() => {
-      this.handleGsapAnimation()
-    })
-    this.$nextTick(() => {
-      this.handleResize()
-    })
-    window.addEventListener('resize', () => {
-      this.setColumns()
-      this.handleResize()
-    })
-  },
-  destroyed () {
-    window.removeEventListener('resize', this.setColumns)
-    window.removeEventListener('resize', this.handleResize)
+    if (this.$store.state.siteIsLoaded) {
+      this.handleAnimation()
+    } else {
+      this.$store.watch(
+        state => this.$store.state.siteIsLoaded,
+        (newVal) => {
+          if (newVal) {
+            this.handleAnimation()
+          }
+        }
+      )
+    }
   },
   methods: {
-    handleGsapAnimation () {
-      if (this.$refs.gsap1) {
-        this.$_fadeIn(this.$refs.gsap1, 24, 0, 'top+=58', 0, 1.2)
-      }
-      if (this.$refs.gsap2 && this.$refs.gsap2.length) {
-        this.$refs.gsap2.forEach((el, i) => {
-          this.$_fadeIn(el, 24, 0, 'top+=58', 0, 1.2)
+    handleAnimation () {
+      this.$nextTick(() => {
+        this.$CustomEase.create('customEaseOut', '0.23, 1, 0.32, 1')
+
+        const tl = this.$gsap.timeline({
+          scrollTrigger: {
+            trigger: this.$refs.accordions,
+            toggleActions: 'play none play none',
+            start: '+48 bottom'
+          }
         })
-      }
-    },
-    handleResize (time = 300) {
-      setTimeout(() => {
-        if (this.expanded !== null) {
-          this.accordionBodyHeight = this.$refs.content[this.expanded].clientHeight
+
+        if (this.props.content) {
+          tl.from(this.$refs.content.$el, {
+            opacity: 0,
+            y: '48',
+            duration: 1,
+            ease: 'customEaseOut'
+          }, '<+=0.1')
         }
-      }, time)
-    },
-    pauseVideos () {
-      const videos = this.$refs.video
-      const videosEmbed = this.$refs.videoEmbed
-      if (videos) {
-        videos.forEach((vid) => { vid.pause() })
-      }
-      if (videosEmbed) {
-        videosEmbed.forEach((vid) => { vid.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*') })
-      }
-    },
-    setColumns () {
-      this.columns = window.innerWidth <= 1280 ? 1 : +this.props.columns
+
+        if (this.props.items) {
+          tl.from(this.$refs.accordion, {
+            opacity: 0,
+            y: '48',
+            duration: 1.5,
+            ease: 'bounce'
+          }, '<+=0.2')
+        }
+      })
     },
     toggleAccordion (i) {
-      this.pauseVideos()
-      this.expanded === i ? this.expanded = null : this.expanded = i
-      if (this.expanded !== null) {
-        this.accordionBodyHeight = this.$refs.content[i].clientHeight
+      if (this.activeItem !== i) {
+        this.activeItem = i
       } else {
-        this.accordionBodyHeight = 0
+        this.activeItem = null
       }
-      this.handleResize(200)
     }
   }
 }

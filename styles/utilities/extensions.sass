@@ -127,3 +127,96 @@ $spacing-mobile: 48
       margin-bottom: rem-calc(($spacing-mobile / 2))
     margin-bottom: rem-calc(($spacing-default / 2))
 
+// ---- Margins -----
+%margin-top
+  @include nexus
+    margin-top: .75rem
+  @include phone-land-lg
+    margin-top: .75rem
+  margin-top: 1rem
+
+  &--sm
+    @include nexus
+      margin-top: .5rem
+    @include phone-land-lg
+      margin-top: .5rem
+    margin-top: .75rem
+
+  &--md
+    @include nexus
+      margin-top: 1.25rem
+    @include phone-land-lg
+      margin-top: 1.25rem
+    margin-top: 1.5rem
+
+  &--lg
+    @include nexus
+      margin-top: 1.5rem
+    @include phone-land-lg
+      margin-top: 1.5rem
+    margin-top: 2rem
+
+%margin-bottom
+  @include nexus
+    margin-bottom: .75rem
+  @include phone-land-lg
+    margin-bottom: .75rem
+  margin-bottom: 1rem
+
+  &--sm
+    @include nexus
+      margin-bottom: .5rem
+    @include phone-land-lg
+      margin-bottom: .5rem
+    margin-bottom: .75rem
+
+  &--md
+    @include nexus
+      margin-bottom: 1.25rem
+    @include phone-land-lg
+      margin-bottom: 1.25rem
+    margin-bottom: 1.5rem
+
+  &--lg
+    @include nexus
+      margin-bottom: 1.5rem
+    @include phone-land-lg
+      margin-bottom: 1.5rem
+    margin-bottom: 2rem
+
+// ---- Paddings -----
+%padding-top
+  @include nexus
+    padding-top: .75rem
+  @include phone-land-lg
+    padding-top: .75rem
+  padding-top: 1rem
+
+  &--sm
+    @include nexus
+      padding-top: .5rem
+    @include phone-land-lg
+      padding-top: .5rem
+    padding-top: .75rem
+
+  &--md
+    @include nexus
+      padding-top: 1.25rem
+    @include phone-land-lg
+      padding-top: 1.25rem
+    padding-top: 1.5rem
+
+  &--lg
+    @include nexus
+      padding-top: 1.5rem
+    @include phone-land-lg
+      padding-top: 1.5rem
+    padding-top: 2rem
+
+// other
+%title
+  @include nexus
+    margin-bottom: 1.5rem
+  @include phone-land-lg
+    margin-bottom: 1.5rem
+  margin-bottom: 2rem

@@ -1,0 +1,35 @@
+.block-count-up-cards
+  position: relative
+  overflow: hidden
+    
+  &__container
+    @include container
+    justify-content: center
+
+  &__card
+    @include col (5)
+    display: flex
+    position: relative
+    flex-direction: column
+    align-items: center
+    text-align: center
+
+    &-label
+      font-family: var(--primary-header)
+
+    &-button
+      @extend %margin-top
+      margin-right: auto
+      margin-left: auto
+
+    &:nth-of-type(odd)
+      .block-count-up-cards__card-label
+        color: var(--dark-green)
+    &:nth-of-type(even)
+      .block-count-up-cards__card-label
+        color: var(--pink)
+
+    &:not(:last-of-type)
+      @include tablet
+        margin-bottom: 2rem
+      

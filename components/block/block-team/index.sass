@@ -1,0 +1,72 @@
+.block-team
+  overflow: hidden
+
+  &__container
+    @include container
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+  &__title
+    @extend %title
+    width: 100%
+    text-align: center
+    font-weight: 400
+
+  &__card-container
+    @include tablet
+      justify-content: space-evenly
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    width: 100%
+
+  &__card
+    @include col (4)
+    @include tablet
+      width: 40%
+    @include nexus
+      width: 90%
+    display: flex
+    position: relative
+    flex-direction: column
+    overflow: hidden
+
+    &:nth-child(-n+3)
+      @include nexus
+        margin-bottom: unset
+      margin-bottom: 1rem
+
+    &:not(:last-of-type)
+      @include nexus
+        margin-bottom: 2rem
+
+  &__image
+    margin: 0 auto
+    width: 100%
+    max-width: rem-calc(325)
+    &.base-image
+      position: relative
+
+    .base-image__image
+      position: relative
+
+  &__content
+    display: flex
+    position: relative
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: .5rem
+    width: 100%
+
+  &__name
+    @extend %h4
+    height: fit-content
+    text-align: center
+    color: var(--text)
+    font-weight: 400
+
+  &__job-title
+    @extend %body
+    text-align: center

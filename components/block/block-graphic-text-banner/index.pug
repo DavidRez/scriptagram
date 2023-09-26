@@ -1,0 +1,7 @@
+section.block-graphic-text-banner(ref='container')
+  .block-graphic-text-banner__container(:class='{ "block-graphic-text-banner__container--reverse": props.reverse }')
+    .block-graphic-text-banner__cols
+      .block-graphic-text-banner__col.block-graphic-text-banner__col--graphic(v-if='props.svg' ref='col1')
+        BaseIcon(:name='props.svg')
+      .block-graphic-text-banner__col.block-graphic-text-banner__col--content(ref='col2')
+        BlockContent(:props='props.content' :bgColor='props.background_color')

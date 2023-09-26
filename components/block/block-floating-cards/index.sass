@@ -1,0 +1,92 @@
+.block-floating-cards
+  position: relative
+    
+  &__container
+    @include container
+    justify-content: center
+  
+  &__card
+    @include col (5)
+    @include tablet
+      padding: 3rem
+    @include nexus
+      padding: 1rem
+    display: flex
+    position: relative
+    flex-direction: column
+    align-items: flex-start
+    margin: 0 .75rem
+    border-radius: rem-calc(25)
+    box-shadow: 0 0 10px rgba($black, 0.1)
+    background: $white
+    padding: 2rem
+    height: fit-content
+
+    &-content
+      @include nexus
+        padding: 0 1rem
+      display: flex
+      flex-direction: column
+      width: 100%
+
+    &-header
+      display: flex
+      flex-wrap: wrap
+
+    &-image
+      @include nexus
+        margin-right: .5rem
+      @include phone-land-lg
+        height: rem-calc(50)
+      display: inline-block
+      margin-right: 1rem
+      height: rem-calc(75)
+
+      &.base-image
+        position: relative
+
+      .base-image__image
+        position: relative
+        width: auto
+        height: 100%
+
+    &-label
+      display: inline
+      height: fit-content
+
+    &-subheader
+      @extend %margin-bottom--sm
+      line-height: 1.25
+      font-family: var(--secondary-header)
+      font-size: rem-calc(22)
+      font-weight: 600
+
+    &-body
+      @extend %wysiwyg-text
+      @extend %margin-bottom
+
+    &-disclaimer
+      @extend %disclaimer
+
+    &-button
+      @extend %margin-top
+      
+      &.block-button
+        @include nexus
+          width: 100%
+        .block-button__button
+          justify-content: center
+
+    &:nth-of-type(odd)
+      @include tablet
+        margin-top: 0
+      margin-top: 15%
+    &:nth-of-type(even)
+      @include tablet
+        margin-top: 0
+      margin-bottom: 15%
+
+    &:not(:last-of-type)
+      @include tablet
+        margin-bottom: 2rem
+      

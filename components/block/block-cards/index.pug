@@ -1,0 +1,12 @@
+section.block-cards
+  .block-cards__container(ref='container')
+    h2.block-cards__title(v-if='props.title' v-html='props.title' ref='title')
+    .block-cards__cards
+      .block-cards__card(
+        v-for='(card, i) in props.cards',
+        :key='`card-${i}`',
+        ref='cards')
+        .block-cards__card-title
+          BaseIcon.block-cards__card-icon(:name='card.title.icon')
+          h3.block-cards__card-label(v-html='card.title.label')
+        .block-cards__card-body(v-if='card.body' v-html='card.body')

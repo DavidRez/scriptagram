@@ -1,9 +1,15 @@
 @mixin hamburger-basic($color, $timing, $width, $height)
+  @include hover-supported
+    span
+      &::after
+        animation: shrink linear .75s forwards
+        // width: 100%
   position: relative
   z-index: 999
   cursor: pointer
   width: $width
   height: $height
+  overflow: hidden
 
   span
     display: block
@@ -14,7 +20,7 @@
     transition: all #{$timing} ease
     background: $color
     width: 100%
-    height: rem-calc(3)
+    height: rem-calc(2)
 
     &:first-child
       top: 0
@@ -26,17 +32,39 @@
     &:last-child
       top: calc(100% - 3px)
 
-  &--active
-    span
-      background: $white
-      &:first-child,
-      &:last-child
-        top: 50%
-        left: 50%
-        width: 0
+    &::after
+      display: block
+      position: absolute
+      top: 0
+      left: 0
+      // transition: width .3s ease-in-out
+      content: ''
+      background: rgba(var(--green-rgb), 1)
+      width: 0%
+      height: 100%
 
-      &:nth-child(2)
-        transform: rotate(45deg)
-
-      &:nth-child(3)
-        transform: rotate(-45deg)
+  @keyframes shrink
+    0%
+      opacity: .9
+      width: 0
+      transform-origin: left center
+    // 15%
+    //   background: rgba(var(--green-rgb), .9)
+    //   width: 90%
+    //   transform-origin: right center
+    // 45%
+    //   background: rgba(var(--green-rgb), .7)
+    //   width: 60%
+    //   transform-origin: center
+    60%
+      opacity: .25
+      width: 80%
+      transform-origin: right center
+    // 90%
+    //   background: rgba(var(--green-rgb), .8)
+    //   width: 60%
+    //   transform-origin: left center
+    100%
+      opacity: 0
+      width: 100%
+      transform-origin: left center
