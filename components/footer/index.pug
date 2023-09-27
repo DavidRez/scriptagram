@@ -5,8 +5,9 @@ footer.footer
       BaseIcon.footer__bubbles.footer__bubbles--large(name='footer-bubbles-large' ref='largeBubbles' :style='{ left: position }')
       BaseIcon.footer__bubbles.footer__bubbles--small(name='footer-bubbles-small' ref='smallBubbles' :style='{ right: position }')
       BaseIcon.footer__logo(name='logo')
-      FooterDesktop.footer__row(v-if='!$store.state.isTablet' :props='$store.state.global' :links='links')
-      FooterMobile.footer__row(v-if='$store.state.isTablet' :props='$store.state.global' :links='links')
+      FooterMobile.footer__row(v-if='$store.state.isPhoneLandLg || $store.state.isTablet' :props='$store.state.global' :links='links')
+      FooterDesktop.footer__row(v-else :props='$store.state.global' :links='links')
+      
   .footer__bottom
     .footer__container.footer__container--bottom
       .footer__bottom--col
