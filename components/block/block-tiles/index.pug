@@ -8,7 +8,7 @@ section.block-tiles
         ref='tiles'
       )
         .block-tiles__image-container
-          BaseImage.block-tiles__image(v-bind='tile.image')
+          BaseImage.block-tiles__image(v-bind='tile.image' forceVisible imageBackground)
         h3.block-tiles__tile-title(v-if='tile.title') {{ tile.title }}
         BlockButton.block-tiles__button(
           v-if='tile.button'
