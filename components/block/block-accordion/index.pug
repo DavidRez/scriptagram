@@ -1,6 +1,6 @@
 section.block-accordion
   .block-accordion__container(ref='container')
-    BlockContent.block-accordion__content(v-if='props.content' :props='props.content' ref='content')
+    BlockContent.block-accordion__content(v-if='props.content' :props='props.content' animate ref='content')
     .block-accordion__accordion(ref='accordion')
       button.block-accordion__item(v-for='(item, i) in props.items', 
         :key='`${question}-${i}`',
