@@ -13,7 +13,6 @@ section.block-gallery-slider(:class='{ "block-gallery-slider--center": props.cen
         )
           .block-gallery-slider__image-container(v-if='item.acf_fc_layout === "photo"')
             BaseImage.block-gallery-slider__image(
-              forceVisible,
               v-bind='Object.assign({}, item.image, { imageBackground: true, forceVisible: true })'
             )
           .block-gallery-slider__video-container(v-else-if='item.acf_fc_layout === "video_file"')
