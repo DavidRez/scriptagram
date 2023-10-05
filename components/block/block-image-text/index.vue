@@ -41,16 +41,18 @@ export default {
         const tl = this.$gsap.timeline({
           scrollTrigger: {
             trigger: container,
-            start: 'center bottom',
+            start: '+48 bottom',
             toggleActions: 'play none play none'
           }
         })
 
         if (this.props.reverse_layout) {
           tl.fromTo(this.$refs.col1, {
-            y: '48'
+            y: '24',
+            opacity: 0
           }, {
             y: '0',
+            opacity: 1,
             duration: 1,
             ease: 'bounce'
           }, '<+=0.1')
@@ -62,7 +64,7 @@ export default {
             opacity: 1,
             duration: 1,
             ease: 'customEaseOut'
-          })
+          }, '<+=0.2')
         } else {
           tl.fromTo(this.$refs.col2, {
             y: '24',
@@ -72,14 +74,16 @@ export default {
             opacity: 1,
             duration: 1,
             ease: 'customEaseOut'
-          })
+          }, '<+=0.1')
           tl.fromTo(this.$refs.col1, {
-            y: '48'
+            y: '24',
+            opacity: 0
           }, {
             y: '0',
+            opacity: 1,
             duration: 1,
             ease: 'bounce'
-          }, '<+=0.1')
+          }, '<+=0.2')
         }
       })
     }
