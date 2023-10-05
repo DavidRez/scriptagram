@@ -9,7 +9,7 @@ section.block-testimonials
           :style='{ width: width }'
           ref='slides'
         )
-          BaseImage.block-testimonials__image(v-if='slide.image' v-bind='slide.image')
+          BaseImage.block-testimonials__image(v-if='slide.image' v-bind='slide.image' forceVisible imageBackground)
           .block-testimonials__content(tabindex='0')
             .block-testimonials__content-from(v-if='slide.from' v-html='slide.from')
             .block-testimonials__content-body(v-if='slide.testimonial' v-html='slide.testimonial')
