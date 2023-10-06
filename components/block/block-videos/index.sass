@@ -11,13 +11,25 @@
     width: 100%
     text-align: center
 
+  &__subtitle
+    @include tablet
+      font-size: rem-calc(26)
+    @include nexus
+      font-size: rem-calc(20)
+    @include phone-land-lg
+      font-size: rem-calc(20)
+    @include phone-lg
+      font-size: rem-calc(20)
+    @include phone
+      font-size: rem-calc(18)
+    font-size: 2rem
+
   &__col
     @include col (12)
     position: relative
     transition: all .2s ease
     overflow-x: auto
     overflow-y: hidden
-    -webkit-overflow-scrolling: auto
 
     &::-webkit-scrollbar
       cursor: pointer
