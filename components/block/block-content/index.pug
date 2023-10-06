@@ -10,13 +10,16 @@
       'block-content--header-color-white': props.header_color === 'white'
     }
   ]`)
-  h1.block-content__header(v-if='props.hero_header && props.header', v-html='props.header',
-    :class=`{ 'block-content__header--no-margin': !props.subheader && !props.body }`,
-    ref='header')
+  h1.block-content__header(v-if='props.hero_header && props.header', v-html='props.header' ref='header')
   h2.block-content__header(
-    v-if='props.header', v-html='props.hero_header && props.subheader ? props.subheader : props.header',
-    :class=`{ 'block-content__header--no-margin': !props.subheader && !props.body }`,
-    ref='header'
+    v-if='!props.hero_header && props.header', v-html='props.header',
+    :class=`{ 'block-content__header--no-margin': props.hero_header && props.subheader && !props.body }`,
+    ref='subheader'
+  )
+  h2.block-content__header(
+    v-if='props.hero_header && props.subheader', v-html='props.subheader',
+    :class=`{ 'block-content__header--no-margin': props.hero_header && props.subheader && !props.body }`,
+    ref='subheader'
   )
   h3.block-content__subheader(
     v-if='props.subheader && !props.hero_header',
