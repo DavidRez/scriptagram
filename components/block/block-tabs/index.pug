@@ -30,7 +30,8 @@ section.block-tabs(ref='container')
           role='button')
           span {{ `${i+1}` }}
     .block-tabs__col(ref='col2')
-      h2.block-tabs__title(v-html='props.title', ref='title')
+      h1.block-tabs__title(v-if='props.title && props.make_title_h1' v-html='props.title', ref='title')
+      h2.block-tabs__title(v-if='props.title && !props.make_title_h1' v-html='props.title', ref='title')
       .block-tabs__tab-panels(:style='{ height: height }')
         .block-tabs__tab-panel(
           v-for='(panel, j) in props.tabs',
