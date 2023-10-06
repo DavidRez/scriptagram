@@ -58,9 +58,9 @@ export default {
         if (window.innerWidth > 1024) {
           this.testimonials.length === 1 ? this.width = `${width * 0.7}px` : this.testimonials.length === 2 ? this.width = `${width * 0.4}px` : this.width = `${width * 0.6}px`
         } else if (window.innerWidth > 768) {
-          this.width = `${width * 0.8}px`
+          this.width = `${width * 0.7}px`
         } else {
-          this.width = `${width}px`
+          this.width = `${width * 0.8}px`
         }
 
         // const slides = this.$refs.slides

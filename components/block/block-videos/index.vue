@@ -71,10 +71,8 @@ export default {
         const width = this.$refs.col.clientWidth
         if (window.innerWidth > 768) {
           this.videos.length === 1 ? this.width = `${width * 0.7}px` : this.videos.length === 2 ? this.width = `${width * 0.4}px` : this.width = `${width * 0.4}px`
-        } else if (window.innerWidth > 600) {
-          this.width = `${width * 0.8}px`
         } else {
-          this.width = `${width}px`
+          this.width = `${width * 0.8}px`
         }
       })
     },
