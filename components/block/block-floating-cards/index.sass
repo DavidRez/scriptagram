@@ -6,7 +6,7 @@
     justify-content: center
   
   &__card
-    @include col (5)
+    @include col (5.5)
     @include tablet
       padding: 3rem
     @include nexus
@@ -30,8 +30,13 @@
       width: 100%
 
     &-header
+      @include laptop-sm
+        flex-direction: column
+      @include tablet
+        flex-direction: unset
       display: flex
       flex-wrap: wrap
+      align-items: center
 
     &-image
       @include nexus
