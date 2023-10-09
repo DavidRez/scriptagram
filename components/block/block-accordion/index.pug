@@ -3,7 +3,7 @@ section.block-accordion
     BlockContent.block-accordion__content(v-if='props.content' :props='props.content' animate ref='content')
     .block-accordion__accordion(ref='accordion')
       button.block-accordion__item(v-for='(item, i) in props.items', 
-        :key='`${question}-${i}`',
+        :key='`question-${i}`',
         :aria-controls='"block-accordion__drawer--" + i',
         aria-label='expand section',
         :class='{ "block-accordion__item--active": activeItem === i }'
