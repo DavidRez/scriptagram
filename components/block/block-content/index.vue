@@ -48,12 +48,14 @@ export default {
   methods: {
     handleAnimation () {
       this.$nextTick(() => {
-        console.log('call')
-        if ((this.props.hero_header && this.props.header && this.animate) || (this.props.header && this.animate)) {
-          this.$_titleAnimation(this.$refs.header, '0', '24', 1, 0.5)
+        if (this.props.header && this.animate) {
+          this.$_titleAnimation(this.$refs.header, 0.5)
         }
         if (this.props.subheader && this.animate) {
-          this.$_titleAnimation(this.$refs.subheader, '0', '24', 1, 0.5)
+          this.$_titleAnimation(this.$refs.subheader, 1)
+        }
+        if (this.props.body && this.animate) {
+          this.$_titleAnimation(this.$refs.body, 1.5)
         }
       })
     }

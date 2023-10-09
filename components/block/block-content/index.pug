@@ -14,7 +14,7 @@
   h2.block-content__header(
     v-if='!props.hero_header && props.header', v-html='props.header',
     :class=`{ 'block-content__header--no-margin': props.hero_header && props.subheader && !props.body }`,
-    ref='subheader'
+    ref='header'
   )
   h2.block-content__header(
     v-if='props.hero_header && props.subheader', v-html='props.subheader',
@@ -27,7 +27,7 @@
     v-html='props.subheader',
     ref='subheader'
   )
-  .block-content__body(v-if='props.body', v-html='props.body')
+  .block-content__body(v-if='props.body', v-html='props.body' ref='body')
   .block-content__buttons(
     v-if='props.buttons',
     :class=`[
