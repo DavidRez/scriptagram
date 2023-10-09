@@ -36,7 +36,7 @@ export default {
       this.$nextTick(() => {
         this.$CustomEase.create('customEaseOut', '0.23, 1, 0.32, 1')
         if (this.props.title) {
-          this.$_titleAnimation(this.$refs.title, '0', '24', 1, 0)
+          this.$_titleAnimation(this.$refs.title, 0)
         }
         if (this.props.logos) {
           const tl = this.$gsap.timeline({

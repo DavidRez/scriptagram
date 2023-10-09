@@ -33,7 +33,7 @@ export default {
     handleAnimation () {
       this.$nextTick(() => {
         if (this.props.title) {
-          this.$_titleAnimation(this.$refs.title, '0', '24', 1, 0)
+          this.$_titleAnimation(this.$refs.title)
         }
         if (this.props.cards) {
           const tl = this.$gsap.timeline({

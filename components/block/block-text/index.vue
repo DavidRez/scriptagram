@@ -35,7 +35,7 @@ export default {
         this.$CustomEase.create('customEaseOut', '0.23, 1, 0.32, 1')
         const container = this.$refs.container
         if (this.props.title) {
-          this.$_titleAnimation(this.$refs.title, '0', '24', 1, 0)
+          this.$_titleAnimation(this.$refs.title, 0)
         }
         const tl = this.$gsap.timeline({
           scrollTrigger: {
