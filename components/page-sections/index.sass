@@ -7,9 +7,15 @@
     position: absolute
     align-items: center
     justify-content: center
-    transition: all .1s ease
+    transform: scale(0)
+    transition: transform 1s ease, opacity .5s ease-in
+    opacity: 0
     z-index: -1
-    transform-origin: right center
+    transform-origin: center
+
+    .onscroll-animation &
+      transform: scale(1)
+      opacity: 1
 
     svg
       width: 100%

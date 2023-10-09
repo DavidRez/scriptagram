@@ -52,8 +52,30 @@ export default {
     this.$nextTick(() => {
       setTimeout(() => {
         this.$store.dispatch('SITE_IS_LOADED', true)
+        this.handleAnimation()
       }, 100)
     })
+  },
+  methods: {
+    handleAnimation () {
+      this.$nextTick(() => {
+        if (this.props) {
+          this.$refs.sections.forEach((section, i) => {
+            const delay = 0.25 + (0.1 * i)
+            const tl = this.$gsap.timeline({
+              scrollTrigger: {
+                trigger: section,
+                start: '+48 bottom',
+                toggleActions: 'play none play none'
+              }
+            })
+            tl.add(() => {
+              section.classList.add('onscroll-animation')
+            }, `'<+=${delay}'`)
+          })
+        }
+      })
+    }
   }
 }
 </script>

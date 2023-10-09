@@ -5,7 +5,7 @@
     :id='section.hash'
     :key='`section-${i}`'
   )
-    .page-sections__section(:id='`${section.acf_fc_layout}-${i}`')
+    .page-sections__section(:id='`${section.acf_fc_layout}-${i}`' ref='sections')
       div(v-if='section.acf_fc_layout === null')
       Hero(v-else-if='section.acf_fc_layout === "hero"', :props='section', :class='`component-padding--` + section.component_padding')
       BlockAccordion(v-else-if='section.acf_fc_layout === "accordion"', :props='section', :class='`component-padding--` + section.component_padding')
@@ -27,8 +27,14 @@
       BlockTiles(v-else-if='section.acf_fc_layout === "tiles"', :props='section', :class='`component-padding--` + section.component_padding')
       BlockVideos(v-else-if='section.acf_fc_layout === "videos"', :props='section', :class='`component-padding--` + section.component_padding')
       ContactBanner(v-else-if='section.acf_fc_layout === "contact_banner"', :props='section', :class='`component-padding--` + section.component_padding')
-      BaseIcon.page-sections__circle.page-sections__circle--left(v-if='section.graphics && section.graphics.left.add' :name='section.graphics.left.circle' :class='[`page-sections__circle--` + section.graphics.left.position, `page-sections__circle--` + section.graphics.left.size]')
-      BaseIcon.page-sections__circle.page-sections__circle--right(v-if='section.graphics && section.graphics.right.add' :name='section.graphics.right.circle' :class='[`page-sections__circle--` + section.graphics.right.position, `page-sections__circle--` + section.graphics.right.size]')
+      BaseIcon.page-sections__circle.page-sections__circle--left(v-if='section.graphics && section.graphics.left.add',
+        :name='section.graphics.left.circle',
+        :class='[`page-sections__circle--` + section.graphics.left.position, `page-sections__circle--` + section.graphics.left.size]',
+        ref='left')
+      BaseIcon.page-sections__circle.page-sections__circle--right(v-if='section.graphics && section.graphics.right.add',
+        :name='section.graphics.right.circle',
+        :class='[`page-sections__circle--` + section.graphics.right.position, `page-sections__circle--` + section.graphics.right.size]',
+        ref='right')
 
 
       // devMode is toggled in the global custom-post in the API and is only effective when the site is run locally.
