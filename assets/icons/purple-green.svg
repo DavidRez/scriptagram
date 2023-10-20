@@ -1,5 +1,24 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 326.67 550">
-  <rect x="83.33" width="177.78" height="177.78" rx="88.89" style="fill: #5a39a2"/>
-  <rect y="194.44" width="177.78" height="177.78" rx="88.89" style="fill: #a74bd2"/>
-  <rect x="77.78" y="301.11" width="248.89" height="248.89" rx="124.44" style="fill: #23cca2"/>
+<svg id="a7318526-b8db-41b3-b986-5ba3d19be2ae" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 326.66998 550">
+  <defs>
+    <linearGradient id="fa33b432-347f-42b1-9bef-6962364b918a" x1="172.21999" y1="552" x2="172.21999" y2="374.22" gradientTransform="matrix(1, 0, 0, -1, 0, 552)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5a39a2"/>
+      <stop offset="0.28" stop-color="#58379d"/>
+      <stop offset="0.61" stop-color="#50338e"/>
+      <stop offset="0.98" stop-color="#452b75"/>
+      <stop offset="1" stop-color="#442b74"/>
+    </linearGradient>
+    <linearGradient id="acd2aa9b-91dd-4a63-8d5e-783575a455ee" x1="88.89" y1="357.56" x2="88.89" y2="179.77997" gradientTransform="matrix(1, 0, 0, -1, 0, 552)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a74bd2"/>
+      <stop offset="0.29" stop-color="#9a49bf"/>
+      <stop offset="0.88" stop-color="#7a448d"/>
+      <stop offset="1" stop-color="#734382"/>
+    </linearGradient>
+    <linearGradient id="a9880aa4-4da3-4138-9be2-5ae4e80e43da" x1="202.22499" y1="250.89001" x2="202.22499" y2="2" gradientTransform="matrix(1, 0, 0, -1, 0, 552)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#23cca2"/>
+      <stop offset="1" stop-color="#329279"/>
+    </linearGradient>
+  </defs>
+  <path d="M172.22,0h0a88.89,88.89,0,0,1,88.89,88.89h0a88.89,88.89,0,0,1-88.89,88.89h0A88.89,88.89,0,0,1,83.33,88.89h0A88.89,88.89,0,0,1,172.22,0Z" style="fill: url(#fa33b432-347f-42b1-9bef-6962364b918a)"/>
+  <path d="M88.89,194.44h0a88.89,88.89,0,0,1,88.89,88.89h0a88.89,88.89,0,0,1-88.89,88.89h0A88.89,88.89,0,0,1,0,283.33v0H0A88.89,88.89,0,0,1,88.89,194.44Z" style="fill: url(#acd2aa9b-91dd-4a63-8d5e-783575a455ee)"/>
+  <rect x="77.78" y="301.10999" width="248.88998" height="248.89001" rx="124.44" style="fill: url(#a9880aa4-4da3-4138-9be2-5ae4e80e43da)"/>
 </svg>

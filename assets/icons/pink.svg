@@ -1,3 +1,9 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1030 1030">
-  <circle cx="515" cy="515" r="515" style="fill: #b44d95"/>
+<svg id="a9de7508-a48a-4565-9560-3f5cc9afbbc2" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1030 1030">
+  <defs>
+    <linearGradient id="a1b539e1-b3b8-427c-a1b9-1432f35c8dd9" x1="515" y1="1030" x2="515" gradientTransform="matrix(1, 0, 0, -1, 0, 1030)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b44d95"/>
+      <stop offset="1" stop-color="#903b77"/>
+    </linearGradient>
+  </defs>
+  <circle cx="515" cy="515" r="515" style="fill: url(#a1b539e1-b3b8-427c-a1b9-1432f35c8dd9)"/>
 </svg>

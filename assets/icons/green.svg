@@ -1,3 +1,12 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1156 1156">
-  <circle cx="578" cy="578" r="578" style="fill: #23cca2"/>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1156 1156">
+  <defs>
+    <linearGradient id="linear-gradient" x1="578" y1="1156" x2="578" gradientTransform="matrix(1, 0, 0, -1, 0, 1156)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#23cca2"/>
+      <stop offset="0.25" stop-color="#24c89f"/>
+      <stop offset="0.53" stop-color="#27bb96"/>
+      <stop offset="0.8" stop-color="#2da687"/>
+      <stop offset="1" stop-color="#329279"/>
+    </linearGradient>
+  </defs>
+  <circle cx="578" cy="578" r="578" style="fill: url(#linear-gradient)"/>
 </svg>

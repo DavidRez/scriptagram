@@ -1,4 +1,14 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <circle cx="160" cy="40" r="40" style="fill: #45bce1"/>
-  <path d="M80,40h0a80,80,0,0,1,80,80h0a80,80,0,0,1-80,80h0A80,80,0,0,1,0,120H0A80,80,0,0,1,80,40Z" style="fill: #23cca2"/>
+<svg id="f09fa9a4-c2c8-4c48-a75a-bde047f40736" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="ae7a9b76-98d9-486a-b86b-05c85777a6d7" x1="160" y1="202" x2="160" y2="122" gradientTransform="matrix(1, 0, 0, -1, 0, 202)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#45bce1"/>
+      <stop offset="1" stop-color="#3797b4"/>
+    </linearGradient>
+    <linearGradient id="a48e278a-b1a0-403a-8ecd-ea304dc6c565" x1="80" y1="162" x2="80" y2="2" gradientTransform="matrix(1, 0, 0, -1, 0, 202)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#23cca2"/>
+      <stop offset="1" stop-color="#329279"/>
+    </linearGradient>
+  </defs>
+  <circle cx="160" cy="40" r="40" style="fill: url(#ae7a9b76-98d9-486a-b86b-05c85777a6d7)"/>
+  <path d="M80,40h0a80,80,0,0,1,80,80h0a80,80,0,0,1-80,80h0A80,80,0,0,1,0,120H0A80,80,0,0,1,80,40Z" style="fill: url(#a48e278a-b1a0-403a-8ecd-ea304dc6c565)"/>
 </svg>

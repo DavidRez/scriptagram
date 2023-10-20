@@ -1,4 +1,14 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 166 160">
-  <path d="M114.5,103h0A51.5,51.5,0,0,1,63,51.5h0A51.5,51.5,0,0,1,114.5,0h0A51.5,51.5,0,0,1,166,51.5h0A51.5,51.5,0,0,1,114.5,103Z" style="fill: #23cca2"/>
-  <path d="M51.5,160h0A51.5,51.5,0,0,1,0,108.5H0A51.5,51.5,0,0,1,51.5,57h0A51.5,51.5,0,0,1,103,108.5h0A51.5,51.5,0,0,1,51.5,160Z" style="fill: #ffe001"/>
+<svg id="f445f6e3-20ab-4df4-beca-ed477f8dabf9" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 166 160">
+  <defs>
+    <linearGradient id="bacf4ced-4576-43f8-981d-ab2d5b1396f7" x1="114.5" y1="162" x2="114.5" y2="59" gradientTransform="matrix(1, 0, 0, -1, 0, 162)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#23cca2"/>
+      <stop offset="1" stop-color="#329279"/>
+    </linearGradient>
+    <linearGradient id="a6d43bc0-7433-4828-989f-f9165bcc5514" x1="51.5" y1="105" x2="51.5" y2="2" gradientTransform="matrix(1, 0, 0, -1, 0, 162)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe001"/>
+      <stop offset="1" stop-color="#c3ae07"/>
+    </linearGradient>
+  </defs>
+  <path d="M114.5,103h0A51.5,51.5,0,0,1,63,51.5h0A51.5,51.5,0,0,1,114.5,0h0A51.5,51.5,0,0,1,166,51.5h0A51.5,51.5,0,0,1,114.5,103Z" style="fill: url(#bacf4ced-4576-43f8-981d-ab2d5b1396f7)"/>
+  <path d="M51.5,160h0A51.5,51.5,0,0,1,0,108.5H0A51.5,51.5,0,0,1,51.5,57h0A51.5,51.5,0,0,1,103,108.5h0A51.5,51.5,0,0,1,51.5,160Z" style="fill: url(#a6d43bc0-7433-4828-989f-f9165bcc5514)"/>
 </svg>
