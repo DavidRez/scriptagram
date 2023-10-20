@@ -94,11 +94,11 @@ export default {
           ease: 'customEaseOut'
         }, '<+=0.1')
       }
-      this.$refs.images.forEach((image, i) => {
+      this.$refs.card.forEach((card, i) => {
         const delay = 0.025 + (0.05 * i)
-        tl.from(image.$el, {
+        tl.from(card, {
           opacity: 0,
-          scale: 0.9,
+          scale: 0.7,
           delay,
           duration: 0.5,
           ease: 'customEaseOut'
