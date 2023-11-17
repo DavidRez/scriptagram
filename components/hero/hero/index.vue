@@ -41,7 +41,7 @@ export default {
     } else if (this.$refs.video) {
       this.$refs.video.addEventListener('loadeddata', () => {
         if (!this.$store.state.siteIsLoaded) {
-          this.$store.dispatch('VIEW_SITE', true)
+          this.$store.dispatch('SITE_IS_LOADED', true)
         }
         this.compOpacity = 1
         this.handleAnimation()
@@ -49,7 +49,7 @@ export default {
     }
     if (!this.$refs.video && !this.props.desktop_image.src) {
       if (!this.$store.state.siteIsLoaded) {
-        this.$store.dispatch('VIEW_SITE', true)
+        this.$store.dispatch('SITE_IS_LOADED', true)
       }
       this.compOpacity = 1
       this.handleAnimation()
@@ -70,11 +70,9 @@ export default {
       this.marginTop = `${document.querySelector('.navigation').clientHeight}px`
     },
     loadImage () {
-      this.imgSrc = this.props.desktop_image.src
-      this.webpSrc = this.props.desktop_image.webp
       this.$refs.image.children[1].onload = () => {
         if (!this.$store.state.siteIsLoaded) {
-          this.$store.dispatch('VIEW_SITE', true)
+          this.$store.dispatch('SITE_IS_LOADED', true)
         }
         this.handleAnimation()
       }
@@ -83,15 +81,34 @@ export default {
     },
     handleAnimation () {
       this.$nextTick(() => {
-        const tl = this.$gsap.timeline()
+        const container = this.$refs.container
+        const tl = this.$gsap.timeline({
+          scrollTrigger: {
+            trigger: container,
+            start: 'center bottom',
+            toggleActions: 'play none play none'
+          }
+        })
 
         if (this.props.add_floating_image && this.props.floating_image) {
-          tl.from(this.$refs.floating, {
+          tl.fromTo(this.$refs.floating, {
             y: 24,
-            opacity: 0,
+            opacity: 0
+          }, {
+            y: 0,
+            opacity: 1,
             duration: 2,
             ease: 'bounce'
           }, '<+=0.5')
+        }
+
+        if (this.$refs.circles) {
+          tl.from(this.$refs.circles, {
+            opacity: 0,
+            duration: 2,
+            ease: 'bounce',
+            delay: 1
+          }, '<+=0.6')
         }
       })
     }

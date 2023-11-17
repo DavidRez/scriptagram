@@ -1,5 +1,5 @@
-.hero(:style='{ opacity: compOpacity, marginTop: marginTop }')
-  BaseIcon.hero__circles(name='yellow-green-aqua')
+.hero(:style='{ opacity: compOpacity, marginTop: marginTop }' ref='container')
+  BaseIcon.hero__circles(name='yellow-green-aqua' ref='circles')
   BaseIcon.hero__wave(name='hero-wave')
   picture.hero__picture(v-if='props.media_type === "image"' ref='image')
     source(:srcset='imgWebp' type='image/webp')
