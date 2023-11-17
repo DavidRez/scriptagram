@@ -34,7 +34,7 @@ export default {
     window.addEventListener('resize', this.debounceFunc)
     this.$nextTick(() => {
       if (!this.$store.state.siteLoaded) {
-        this.$store.dispatch('VIEW_SITE', true)
+        this.$store.dispatch('SITE_IS_LOADED', true)
       }
       this.handleAnimation()
     })

@@ -16,7 +16,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       if (!this.$store.state.siteIsLoaded) {
-        this.$store.dispatch('VIEW_SITE', true)
+        this.$store.dispatch('SITE_IS_LOADED', true)
       }
     })
   },
