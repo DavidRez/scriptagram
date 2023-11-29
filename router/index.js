@@ -5,14 +5,14 @@ const router = [
     navigation: false,
     footer: true
   },
+  // {
+  //   name: 'Patient Solutions',
+  //   path: '/patient-solutions',
+  //   navigation: true,
+  //   footer: true
+  // },
   {
-    name: 'Patient Solutions',
-    path: '/patient-solutions',
-    navigation: true,
-    footer: true
-  },
-  {
-    name: 'Ortho Screening',
+    name: 'OrthoScreening',
     path: '/ortho-screening',
     navigation: true,
     footer: true
