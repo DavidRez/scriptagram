@@ -72,12 +72,22 @@
     justify-content: flex-end
 
   &__cta
-    @include tablet
-      display: none
-    // margin-left: 1.5rem
 
     &:focus-visible
       @include focus
+    
+    &--hide
+      display: none
+
+    &--mobile
+      margin-top: 1rem
+      margin-left: unset
+
+  &__cta--secondary
+    margin-left: 1rem
+
+    &-mobile
+      margin-left: unset
 
   &__hamburger
     @include hamburger-basic(var(--primary), .25s, 2rem, rem-calc(24))
@@ -114,9 +124,12 @@
       padding: 4rem 1rem 5rem
     @include phone-land-lg
       padding: 4rem 1rem 5rem
+    display: flex
     position: fixed
     top: 0
     right: 0
+    flex-direction: column
+    align-items: center
     transition: all .5s ease
     z-index: 14
     background: var(--primary)

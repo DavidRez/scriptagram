@@ -7,7 +7,8 @@
       // ROUTES
       MenuLinks.navigation__links(v-if='$store.state.isDesktop' :props='$store.state.global' :links='links' inline)
       // CTA
-      BlockButton.navigation__cta(v-if='$store.state.global.navigation.cta_button' :props='$store.state.global.navigation.cta_button' :class='{ "navigation__cta--hide": $store.state.isTablet }')
+      BlockButton.navigation__cta(v-if='$store.state.global.navigation.cta_button' :props='$store.state.global.navigation.cta_button' :class='{ "navigation__cta--hide": $store.state.isTabletLg }')
+      BlockButton.navigation__cta.navigation__cta--secondary(v-if='$store.state.global.navigation.secondary_cta_button' :props='$store.state.global.navigation.secondary_cta_button' :class='{ "navigation__cta--hide": $store.state.isTabletLg }')
       // HAMBURGER
       .navigation__hamburger(v-if='!$store.state.isDesktop' @click='toggleMenu()' @keyup.enter='toggleMenu()'
         :aria-label='isOpen ? "close menu" : "open menu"' :class='{ "navigation__hamburger--active": isOpen }'
@@ -28,6 +29,13 @@
       //-   span.navigation__drawer-close--bar
       //-   span.navigation__drawer-close--bar
       Menu(:props='$store.state.global' :links='links' :toggleMenu='toggleMenu' :top='top')
+      // CTA
+      BlockButton.navigation__cta(v-if='$store.state.global.navigation.cta_button'
+        :props='Object.assign({}, $store.state.global.navigation.cta_button, { style: "primary-alternate" })'
+        :class='{ "navigation__cta--hide": !$store.state.isTabletLg, "navigation__cta--mobile": $store.state.isTabletLg }')
+      BlockButton.navigation__cta.navigation__cta--secondary(v-if='$store.state.global.navigation.secondary_cta_button'
+        :props='Object.assign({}, $store.state.global.navigation.secondary_cta_button, { style: "secondary-alternate" })'
+        :class='{ "navigation__cta--hide": !$store.state.isTabletLg, "navigation__cta--mobile": $store.state.isTabletLg, "navigation__cta--secondary-mobile": $store.state.isTabletLg }')
       .navigation__close(role='button' aria-label='close menu' @click='toggleMenu()' @keyup.enter='toggleMenu()' tabindex='0')
         span 
         span
