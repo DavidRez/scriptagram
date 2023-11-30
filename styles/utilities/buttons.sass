@@ -80,6 +80,38 @@
   span
     z-index: 2
 
+@mixin button-secondary-alternate
+  @extend %button
+  @include hover-supported
+    border: 2px solid $white
+    color: $white
+    &::after
+      background: var(--primary)
+  position: relative
+  z-index: 0
+  border: 2px solid $white
+  border-radius: rem-calc(25)
+  background: transparent
+  padding: rem-calc(10) rem-calc(20) rem-calc(8)
+  color: var(--primary)
+  overflow: hidden
+
+  &::after
+    @extend %absolute
+    transition: all .3s ease
+    bottom: 0
+    left: 0
+    z-index: -1
+    margin: auto
+    border-radius: rem-calc(25)
+    background: $white
+    width: 110%
+    height: 110%
+    content: ''
+
+  span
+    z-index: 2
+
 @mixin button-underline
   @extend %button
   @include hover-supported
