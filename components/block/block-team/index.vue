@@ -3,10 +3,12 @@
 <script>
 import { bodyScroll, trapFocus } from '~/resources/mixins'
 import BaseImage from '~/components/base/base-image'
+import BlockButton from '~/components/block/block-button'
 
 export default {
   components: {
-    BaseImage
+    BaseImage,
+    BlockButton
   },
   mixins: [
     bodyScroll,
@@ -30,6 +32,7 @@ export default {
     window.removeEventListener('resize', this.setWindowWidth)
   },
   mounted () {
+    console.log(this.props)
     window.addEventListener('resize', this.setWindowWidth)
     if (this.$store.state.siteIsLoaded) {
       this.setWindowWidth()

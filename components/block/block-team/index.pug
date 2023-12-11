@@ -7,3 +7,4 @@ section.block-team
         .block-team__content(ref='content')
           h3.block-team__name(v-if='member.name' v-html='member.name')
           .block-team__job-title(v-if='member.position' v-html='member.position')
+          BlockButton.block-team__button(v-if='member.button.label' :props='member.button')
