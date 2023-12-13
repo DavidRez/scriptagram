@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: https://scriptagram.com/sitemap.xml

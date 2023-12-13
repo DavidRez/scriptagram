@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[43],{591:function(e,n,d){"use strict";d.r(n);var t={middleware:function(e){return(0,e.redirect)("301","/events/page/1")}},r=d(3),component=Object(r.a)(t,undefined,undefined,!1,null,null,null);n.default=component.exports}}]);
