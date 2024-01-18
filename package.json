@@ -28,7 +28,8 @@
     "nuxt-webfontloader": "^1.1.0",
     "svg-inline-loader": "^0.8.0",
     "vee-validate": "^2.2.13",
-    "vue2-touch-events": "^3.2.2"
+    "vue2-touch-events": "^3.2.2",
+    "core-js": "^3.35.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
