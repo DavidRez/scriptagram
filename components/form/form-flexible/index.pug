@@ -85,6 +85,24 @@
           span.form-flexible__submit-check(:class=`{ 'form-flexible__submit-check--showing': formSuccess }`) &#10003
 
   .form-flexible__modal(
+    v-if='idExists'
+    :aria-hidden=`modalOpen ? 'false' : 'true'`,
+    aria-modal='true',
+    :class=`{ 'form-flexible__modal--open': modalOpen }`,
+    role='dialog'
+  )
+    .form-flexible__modal-overlay
+    .form-flexible__modal-container(ref='formModal')
+      button.form-flexible__modal-close(@click='closeModal()', tabindex='0') close
+      .form-flexible__modal-title(v-if='formID') Thank you!
+      .form-flexible__modal-text(v-if='formID') Enjoy the eBook!
+      br
+      a(v-if='formID' href="https://dwp07nh6qnxmi.cloudfront.net/home/ortho-screening-cropped.png" target="_blank")
+        button.form-flexible__submit-button() View eBook
+      slot
+
+  .form-flexible__modal(
+    v-else
     :aria-hidden=`modalOpen ? 'false' : 'true'`,
     aria-modal='true',
     :class=`{ 'form-flexible__modal--open': modalOpen }`,
