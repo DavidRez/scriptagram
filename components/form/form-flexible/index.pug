@@ -68,13 +68,6 @@
                 span.form-flexible__radio-overlay
                 label.form-flexible__radio-label(:for='subfield._id', v-html='subfield.label')
 
-        // Privacy Policy //////////////////////////////////////////////
-
-      .form-flexible__group
-        span.form-flexible__text
-          | We do not share personal data, including phone numbers and consent, with third parties, affiliates, or partners. By providing a telephone number and submitting this form, you are consenting to be contacted by SMS text message. Message & data rates may apply. You can reply STOP to opt-out of further messaging.
-
-
       .form-flexible__group.form-flexible__group--button
         button.form-flexible__submit-button(
           :class=`{
@@ -88,6 +81,12 @@
             v-html='selectedForm.submit_button_label'
           )
           span.form-flexible__submit-check(:class=`{ 'form-flexible__submit-check--showing': formSuccess }`) &#10003
+
+      // Privacy Policy //////////////////////////////////////////////
+
+      .form-flexible__group
+        span.form-flexible__text
+          | We do not share personal data, including phone numbers and consent, with third parties, affiliates, or partners. By providing a telephone number and submitting this form, you are consenting to be contacted by SMS text message. Message & data rates may apply. You can reply STOP to opt-out of further messaging.
 
   .form-flexible__modal(
     v-if='idExists'
