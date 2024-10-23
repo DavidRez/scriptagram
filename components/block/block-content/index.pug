@@ -27,7 +27,10 @@
     v-html='props.subheader',
     ref='subheader'
   )
-  .block-content__body(v-if='props.body', v-html='props.body' ref='body')
+  .block-content__body(v-if='props.body', v-html='props.body' ref='body'
+    :class=`[
+    'block-content--' + props.body_color
+  ]`)
   .block-content__buttons(
     v-if='props.buttons',
     :class=`[
