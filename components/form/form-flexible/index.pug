@@ -84,7 +84,7 @@
           span.form-flexible__radio-overlay
           label.form-flexible__radio-label.form-flexible__text
             | By providing a telephone number and submitting this form, you are consenting to be contacted by SMS text message. Message & data rates may apply. You can reply STOP to opt&#8209;out of further messaging. Read more by visiting our 
-            nuxt-link(to='/privacy-policy' target='_blank' aria-label='Open our Privacy Policy in a new tab' style="color: #FAF9F6; transition: all 0.3s;" onmouseover="this.style.color='#ffffff'; this.style.textDecoration='underline'" onmouseout="this.style.color='#e4e3e3'; this.style.textDecoration='none'") Privacy Policy
+            nuxt-link.form-flexible__link(to='/privacy-policy' target='_blank' aria-label='Open our Privacy Policy in a new tab') Privacy Policy
             | .
             .form-flexible__error-message(v-show="errors.has('optIn')") You must agree to the terms to proceed.
 
