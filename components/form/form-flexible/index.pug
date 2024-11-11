@@ -114,8 +114,9 @@
       button.form-flexible__modal-close(@click='closeModal()', tabindex='0') close
       .form-flexible__modal-title(v-if='formID') Thank you!
       .form-flexible__modal-text(v-if='formID') Enjoy the eBook!
-      a(v-if='selectedForm.pdf_link && isMobile' :href="selectedForm.pdf_link" target="_blank")
-        button.form-flexible__submit-button() View eBook
+      a( v-if='selectedForm.pdf_link && isMobile' :href="selectedForm.pdf_link" target="_blank")
+        button.form-flexible__submit-button(style='padding: .5rem 2.5rem; margin-top: 10px;')
+          span(style='white-space: nowrap;') View Ebook
       br
       slot
 
