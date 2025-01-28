@@ -69,6 +69,7 @@ export default {
                 toggleActions: 'play none play none'
               }
             })
+            // animate circle graphics, if any
             tl.add(() => {
               section.classList.add('onscroll-animation')
             }, `'<+=${delay}'`)

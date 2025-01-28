@@ -60,6 +60,7 @@ export default {
       this.debounce(this.setDimensions, null, 300)
     },
     modalSrc (vid) {
+      // set video in modal
       this.video.title = vid.title
       this.video.src = vid.src
       this.modalOpen = true

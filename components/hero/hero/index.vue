@@ -70,6 +70,7 @@ export default {
       this.marginTop = `${document.querySelector('.navigation').clientHeight}px`
     },
     loadImage () {
+      // wait for image to load first
       this.$refs.image.children[1].onload = () => {
         if (!this.$store.state.siteIsLoaded) {
           this.$store.dispatch('SITE_IS_LOADED', true)

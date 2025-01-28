@@ -27,6 +27,8 @@
       BlockTiles(v-else-if='section.acf_fc_layout === "tiles"', :props='section', :class='`component-padding--` + section.component_padding')
       BlockVideos(v-else-if='section.acf_fc_layout === "videos"', :props='section', :class='`component-padding--` + section.component_padding')
       ContactBanner(v-else-if='section.acf_fc_layout === "contact_banner"', :props='section', :class='`component-padding--` + section.component_padding')
+      
+      // circle graphics for each section
       BaseIcon.page-sections__circle.page-sections__circle--left(v-if='section.graphics && section.graphics.left.add',
         :name='section.graphics.left.circle',
         :class='[`page-sections__circle--` + section.graphics.left.position, `page-sections__circle--` + section.graphics.left.size]',

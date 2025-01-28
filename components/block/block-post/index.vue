@@ -49,6 +49,7 @@ export default {
     this.handleResize()
     window.addEventListener('resize', this.debounceFunc)
 
+    // set prev/next posts
     const currIndex = this.paths.indexOf(this.$route.path)
     this.nextPost = currIndex === this.paths.length - 1 ? null : this.paths[currIndex + 1]
     this.prevPost = currIndex === 0 ? null : this.paths[currIndex - 1]

@@ -2,8 +2,10 @@ footer.footer
   BaseIcon.footer__wave(name='footer-wave' ref='wave' :style='{ top: height }')
   .footer__top
     .footer__container(ref='container')
+      // circle graphics
       BaseIcon.footer__bubbles.footer__bubbles--large(name='footer-bubbles-large' ref='largeBubbles' :style='{ left: position }')
       BaseIcon.footer__bubbles.footer__bubbles--small(name='footer-bubbles-small' ref='smallBubbles' :style='{ right: position }')
+      
       BaseIcon.footer__logo(name='logo')
       FooterMobile.footer__row(v-if='$store.state.isPhoneLandLg || $store.state.isTablet' :props='$store.state.global' :links='links')
       FooterDesktop.footer__row(v-else :props='$store.state.global' :links='links')

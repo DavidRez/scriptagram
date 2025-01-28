@@ -29,8 +29,11 @@ export default {
   async fetch () {
     this.forms = await getCustomPosts('forms')
     this.videos = await getCustomPosts('videos')
+
+    // change number to desired number of posts per page
     this.events = await getCustomPosts('events', 9)
     this.posts = await getCustomPosts('posts', 9)
+
     this.global = await setData('global', 'globalData')
     this.testimonials = await setData('testimonials', 'globalData')
 

@@ -20,6 +20,7 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
+      // grab matching form from store
       this.selectedForm = this.$store.state.forms.posts.find(form => form.id.toString() === this.props.form[0].toString())
     })
   }

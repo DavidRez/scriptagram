@@ -74,6 +74,7 @@ export default {
           }
         })
         if (this.props.reverse_layout) {
+          // animate text
           tl.fromTo(this.$refs.col2, {
             y: '24',
             opacity: 0
@@ -120,6 +121,7 @@ export default {
             duration: 1,
             ease: 'bounce'
           }, '<+=0.1')
+          // animate text
           tl.fromTo(this.$refs.col2, {
             y: '24',
             opacity: 0

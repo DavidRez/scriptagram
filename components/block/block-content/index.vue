@@ -26,6 +26,7 @@ export default {
       type: Boolean,
       default: false
     },
+    // make true to animate text
     animate: {
       type: Boolean,
       default: false

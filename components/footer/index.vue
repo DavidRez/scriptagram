@@ -38,6 +38,7 @@ export default {
       this.debounce(this.setData, null, 300)
     },
     setData () {
+      // set height for wave graphic
       const waveHeight = this.$refs.wave.$el.clientHeight
       this.height = `-${waveHeight * 0.75}px`
       window.innerWidth > 1024 ? this.position = '-15%' : window.innerWidth > 600 ? this.position = '-10%' : this.position = '5%'

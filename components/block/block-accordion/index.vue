@@ -45,15 +45,6 @@ export default {
           }
         })
 
-        // if (this.props.content) {
-        //   tl.from(this.$refs.content.$el, {
-        //     opacity: 0,
-        //     y: '48',
-        //     duration: 1,
-        //     ease: 'customEaseOut'
-        //   }, '<+=0.1')
-        // }
-
         if (this.props.items) {
           tl.from(this.$refs.accordion, {
             opacity: 0,

@@ -37,6 +37,7 @@ export default {
     }
   },
   methods: {
+    // add commas to counter values
     numberWithCommas (str) {
       return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     },

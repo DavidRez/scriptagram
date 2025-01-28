@@ -28,6 +28,7 @@ export default {
       type: Function,
       default: () => ({})
     },
+    // move to top of page
     top: {
       type: Function,
       default: () => ({})
