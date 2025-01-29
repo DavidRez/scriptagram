@@ -1,6 +1,8 @@
 ## About Project
 
-Scriptagra is a custom site, designed in-house. One of the challenges were all the colorful bubbles throughout page. In the end, I applied them through Wordpress as an option for each section, which holds one component. In the future, I would like to split up and animate each bubble for a more fun effect.
+Scriptagram is a custom site, designed in-house. One of the challenges were all the colorful bubbles throughout page. In the end, I applied them through Wordpress as an option for each section, which holds one component. In the future, I would like to split up and animate each bubble for a more fun effect.
+
+https://github.com/user-attachments/assets/1767c175-c676-46c2-99c4-f1128232b524
 
 
 ### Built With
